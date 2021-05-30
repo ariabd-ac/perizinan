@@ -30,4 +30,9 @@ class C_UserManagement extends BaseController
       return redirect()->to(site_url('user-management'))->with('success', 'Data tersimpan');
     }
   }
+  public function destroy($id)
+  {
+    $this->db->table('users')->where(['user_id' => $id])->delete();
+    return redirect()->to(site_url('user-management'))->with('success', 'Data berhasil di hapus');
+  }
 }

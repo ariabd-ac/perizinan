@@ -59,7 +59,13 @@
                 <td>
                   <div class="">
                     <a href="#" class="btn-sm btn-secondary">Edit</a>
-                    <a href="#" class="btn-sm btn-secondary">Hapus</a>
+                    <form action="<?= site_url('user-management/' . $value->user_id) ?>" method="post" class="d-inline">
+                      <?= csrf_field() ?>
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button class="btn-sm btn-danger">
+                        <i class="fa fa-trash"></i> Hapus
+                      </button>
+                    </form>
                   </div>
                 </td>
               </tr>
