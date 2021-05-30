@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Authentication::login');
 $routes->get('/register', 'Authentication::register');
+$routes->get('/perizinan', 'C_Perizinan::index');
+
 
 /*
  * --------------------------------------------------------------------
