@@ -10,5 +10,5 @@
   <a href="#" class=" nav-link "><i class="fas fa-columns"></i> <span>Korpokla</span></a>
 </li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link "><i class="fas fa-th"></i> <span>User Management</span></a>
+  <a href="<?= site_url('user-management') ?>" class="nav-link "><i class="fas fa-th"></i> <span>User Management</span></a>
 </li>

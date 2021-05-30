@@ -61,12 +61,14 @@
   <script src="<?= base_url() ?>/template/assets/js/stisla.js"></script>
 
   <!-- JS Libraies -->
+  <script src="<?= base_url() ?>/template/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- Template JS File -->
   <script src="<?= base_url() ?>/template/assets/js/scripts.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
+  <script src="<?= base_url() ?>/template/assets/js/page/modules-sweetalert.js"></script>
 </body>
 
 </html>

@@ -35,6 +35,9 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Authentication::login');
 $routes->get('/register', 'Authentication::register');
 $routes->get('/perizinan', 'C_Perizinan::index');
+$routes->get('/user-management', 'C_UserManagement::index');
+$routes->get('/user-management/add', 'C_UserManagement::add');
+$routes->post('/user-management', 'C_UserManagement::store');
 
 
 /*
