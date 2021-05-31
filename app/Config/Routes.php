@@ -38,6 +38,8 @@ $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->get('/user-management', 'C_UserManagement::index');
 $routes->get('/user-management/add', 'C_UserManagement::add');
 $routes->post('/user-management', 'C_UserManagement::store');
+$routes->get('/user-management/edit/(:segment)', 'C_UserManagement::edit/$1');
+$routes->put('/user-management/(:segment)', 'C_UserManagement::update/$1');
 $routes->delete('/user-management/(:segment)', 'C_UserManagement::destroy/$1');
 
 

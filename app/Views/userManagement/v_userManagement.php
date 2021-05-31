@@ -48,6 +48,7 @@
               <th>Full Name</th>
               <th>Username</th>
               <th>Korpokla</th>
+              <th>Level</th>
               <th>Action</th>
             </tr>
             <?php foreach ($users  as $key => $value) : ?>
@@ -56,9 +57,10 @@
                 <td><?= $value->full_name ?></td>
                 <td><?= $value->username ?></td>
                 <td><?= $value->korpokla ?></td>
+                <td><?= $value->level ?></td>
                 <td>
                   <div class="">
-                    <a href="#" class="btn-sm btn-secondary">Edit</a>
+                    <a href="<?= site_url('user-management/edit/' . $value->user_id) ?>" class="btn-sm btn-secondary">Edit</a>
                     <form action="<?= site_url('user-management/' . $value->user_id) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <input type="hidden" name="_method" value="DELETE">

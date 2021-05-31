@@ -10,7 +10,7 @@
     <div class="section-header-back">
       <a href="<?= site_url('user-management') ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i></a>
     </div>
-    <h1>Tambah Data User</h1>
+    <h1>Edit Data User</h1>
   </div>
 
 
@@ -22,8 +22,9 @@
         <h4>Masukan data dengan benar!</h4>
       </div>
       <div class="card-body">
-        <form action="<?= site_url('/user-management') ?>" method="post" autocomplete="off">
+        <form action="<?= site_url('c_userManagement/update/' . $users->user_id) ?>" method="post" autocomplete="off">
           <?= csrf_field() ?>
+          <input type="hidden" name="_method" method="put">
           <div class="form-group">
             <label>Full Name</label>
             <div class="input-group">
@@ -32,7 +33,7 @@
                   <i class="fas fa-child"></i>
                 </div>
               </div>
-              <input type="text" name="full_name" class="form-control phone-number" required>
+              <input type="text" name="full_name" class="form-control phone-number" value="<?= $users->full_name ?>">
             </div>
           </div>
           <div class="form-group">
@@ -43,10 +44,10 @@
                   <i class="fas fa-smile"></i>
                 </div>
               </div>
-              <input type="text" name="username" class="form-control phone-number">
+              <input type="text" name="username" class="form-control phone-number" value="<?= $users->username ?>">
             </div>
           </div>
-          <div class="form-group">
+          <div class=" form-group">
             <label>Password Strength</label>
             <div class="input-group">
               <div class="input-group-prepend">
@@ -54,7 +55,7 @@
                   <i class="fas fa-lock"></i>
                 </div>
               </div>
-              <input type="password" name="password" class="form-control pwstrength" data-indicator="pwindicator">
+              <input type="password" name="password" class="form-control pwstrength" data-indicator="pwindicator" required>
             </div>
             <div id="pwindicator" class="pwindicator">
               <div class="bar"></div>
@@ -63,7 +64,7 @@
           </div>
           <div class="form-group">
             <label>Korpokla</label>
-            <select class="form-control" name="korpokla" id="korpokla">
+            <select class="form-control" name="korpokla" value="<?= $users->korpokla ?>" id="korpokla">
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
@@ -71,10 +72,10 @@
           </div>
           <div class="form-group">
             <label>Level</label>
-            <select class="form-control" name="level" id="level">
-              <option value="admin">Admin</option>
-              <option value="korpokla">Korpokla</option>
-              <option value="user">ORANG LEMAH</option>
+            <select class="form-control" name="level" value="<?= $users->level ?>" id="level">
+              <option>Admin</option>
+              <option>Korpokla</option>
+              <option>Pejabad</option>
             </select>
           </div>
           <div class="row">
