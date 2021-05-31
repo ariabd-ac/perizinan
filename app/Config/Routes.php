@@ -42,6 +42,13 @@ $routes->get('/user-management/edit/(:segment)', 'C_UserManagement::edit/$1');
 $routes->put('/user-management/(:segment)', 'C_UserManagement::update/$1');
 $routes->delete('/user-management/(:segment)', 'C_UserManagement::destroy/$1');
 
+$routes->get('/korpokla/', 'C_Korpokla::index');
+$routes->delete('/korpokla/(:segment)', 'C_Korpokla::destroy/$1');
+$routes->get('/korpokla/add', 'C_Korpokla::add');
+$routes->post('/korpokla', 'C_Korpokla::store');
+$routes->get('/korpokla/edit/(:segment)', 'C_Korpokla::edit/$1');
+$routes->put('/korpokla/(:segment)', 'C_Korpokla::update/$1');
+
 
 /*
  * --------------------------------------------------------------------

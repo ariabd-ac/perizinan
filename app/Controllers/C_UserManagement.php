@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\M_Users;
+
 
 class C_UserManagement extends BaseController
 {
@@ -9,8 +11,11 @@ class C_UserManagement extends BaseController
   {
     // echo password_hash('admin', PASSWORD_BCRYPT);
     // die();
+
+
     $builder = $this->db->table('users');
     $query   = $builder->get()->getResult();
+    // dd($query);
     $data['users'] = $query;
     return view('userManagement/v_userManagement', $data);
     // print_r($query);
