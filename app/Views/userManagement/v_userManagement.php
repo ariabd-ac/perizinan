@@ -51,7 +51,7 @@
               <th>Level</th>
               <th>Action</th>
             </tr>
-            <?php foreach ($m_user  as $key => $value) : ?>
+            <?php foreach ($user  as $key => $value) : ?>
               <tr>
                 <td><?= $key + 1 ?></td>
                 <td><?= $value['full_name'] ?></td>

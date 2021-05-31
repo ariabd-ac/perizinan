@@ -11,12 +11,32 @@ class ModelUsers extends Model
 	protected $useTimestamps        = true;
 	protected $useAutoIncrement     = true;
 
-	public function getUser($id = null)
+	public function getUser($id = false)
 	{
-		if ($id == null) {
-			return $this->findAll();
+		if ($id === false) {
+			return $this->table('users')
+				->get()
+				->getResultArray();
+		} else {
+			return $this->table('users')
+				->where('user_id', $id)
+				->get()
+				->getRowArray();
 		}
+	}
 
-		return $this->where(['user_id' => $id])->first();
+	public function insert_users($data)
+	{
+		return $this->db->table($this->table)->insert($data);
+	}
+
+	public function update_users($data, $id)
+	{
+		return $this->db->table($this->table)->update($data, ['user_id' => $id]);
+	}
+
+	public function delete_users($id)
+	{
+		return $this->db->table($this->table)->delete(['user_id' => $id]);
 	}
 }
