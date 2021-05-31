@@ -31,9 +31,16 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/login', 'Authentication::login');
-$routes->get('/register', 'Authentication::register');
+// $routes->get('/', 'Home::index');
+$routes->get('/login', 'Auth::login');
+
+
+$routes->addRedirect('/', 'home');
+
+// $routes->get('/register', 'Authentication::register');
+
+
+
 $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->get('/user-management', 'C_UserManagement::index');
 $routes->get('/user-management/add', 'C_UserManagement::add');

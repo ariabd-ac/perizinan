@@ -25,11 +25,21 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <img src="<?= base_url() ?>/template/assets/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
+            <?php if (session()->getFlashdata('error')) : ?>
+              <div class="alert alert-danger alert-dismissable show fade">
+                <div class="alert-body">
+                  <button class="close" data-dismissable>x</button>
+                  <b>Error!</b>
+                  <?= session()->getFlashdata('error') ?>
+                </div>
+              </div>
+            <?php endif; ?>
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Perizinan</span></h4>
-            <form method="POST" action="#" class="needs-validation" novalidate="">
+            <form method="POST" action="<?= site_url('auth/loginProcess') ?>" class="needs-validation" novalidate="">
+              <?= csrf_field() ?>
               <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+                <label for="email">Username</label>
+                <input id="text" type="text" class="form-control" name="username" tabindex="1" required autofocus>
                 <div class="invalid-feedback">
                   Please fill in your email
                 </div>
