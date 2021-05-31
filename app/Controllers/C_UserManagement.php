@@ -2,27 +2,44 @@
 
 namespace App\Controllers;
 
-use App\Models\M_Users;
+use App\Models\ModelUsers;
 
 
 class C_UserManagement extends BaseController
 {
+
+
+  protected $userModel;
+
+  public function __construct()
+  {
+    $this->userModel = new ModelUsers();
+  }
+
   public function index()
   {
     // echo password_hash('admin', PASSWORD_BCRYPT);
     // die();
 
+    // gak lewat model
 
-    $builder = $this->db->table('users');
-    $query   = $builder->get()->getResult();
-    // dd($query);
-    $data['users'] = $query;
+    // $builder = $this->db->table('users');
+    // $query   = $builder->get()->getResult();
+    // $data['users'] = $query;
+
+    // lewat model
+    $user = $this->userModel->getUser();
+    $data = [
+      'm_user' => $user
+    ];
+    // dd($data);
     return view('userManagement/v_userManagement', $data);
     // print_r($query);
   }
 
   public function add()
   {
+
     return view('userManagement/v_add');
   }
 
@@ -33,7 +50,9 @@ class C_UserManagement extends BaseController
       $query = $this->db->table('users')->getWhere(['user_id' => $id]);
       // print_r($query);
       if ($query->resultID->num_rows > 0) {
-        $data['users'] = $query->getRow();
+        $data = [
+          'users' => $this->userModel->getUser($id)
+        ];
         return view('userManagement/v_edit', $data);
       } else {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

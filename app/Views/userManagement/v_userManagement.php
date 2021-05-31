@@ -51,17 +51,17 @@
               <th>Level</th>
               <th>Action</th>
             </tr>
-            <?php foreach ($users  as $key => $value) : ?>
+            <?php foreach ($m_user  as $key => $value) : ?>
               <tr>
                 <td><?= $key + 1 ?></td>
-                <td><?= $value->full_name ?></td>
-                <td><?= $value->username ?></td>
-                <td><?= $value->korpokla ?></td>
-                <td><?= $value->level ?></td>
+                <td><?= $value['full_name'] ?></td>
+                <td><?= $value['username'] ?></td>
+                <td><?= $value['korpokla'] ?></td>
+                <td><?= $value['level'] ?></td>
                 <td>
                   <div class="">
-                    <a href="<?= site_url('user-management/edit/' . $value->user_id) ?>" class="btn-sm btn-secondary"><i class="fa fa-edit"></i></a>
-                    <form action="<?= site_url('user-management/' . $value->user_id) ?>" method="post" class="d-inline">
+                    <a href="<?= site_url('user-management/edit/' . $value['user_id']) ?>" class="btn-sm btn-secondary"><i class="fa fa-edit"></i></a>
+                    <form action="<?= site_url('user-management/' . $value['user_id']) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <input type="hidden" name="_method" value="DELETE">
                       <button class="btn-sm btn-danger">
