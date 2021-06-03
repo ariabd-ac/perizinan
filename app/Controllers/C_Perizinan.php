@@ -112,4 +112,170 @@ class C_Perizinan extends BaseController
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
   }
+
+  public function formpindah()
+  {
+    if ($this->request->isAJAX()) {
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelPerizinan();
+      $row = $pj->find($perijinan_id);
+
+      $data = [
+        // yang di lempar ke view => field
+        'perijinan_id' => $row['perijinan_id'],
+        'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
+        'alamat' => $row['alamat'],
+        'jenis_tanah' => $row['jenis_tanah'],
+        'lokasi_tanah' => $row['lokasi_tanah'],
+        'nomor_ijin' => $row['nomor_ijin'],
+        'tanggal_ijin' => $row['tanggal_ijin'],
+        'jw_disahkan' => $row['jw_disahkan'],
+        'jw_tenggang' => $row['jw_tenggang'],
+        'peruntukan' => $row['peruntukan'],
+        'luas' => $row['luas'],
+        'nilai_tarip' => $row['nilai_tarip'],
+        'nilai_retribusi' => $row['nilai_retribusi'],
+        'realisasi' => $row['realisasi'],
+        'keterangan' => $row['keterangan'],
+      ];
+
+
+      $msg = [
+        'sukses' => view('perijinan/modalpindah', $data)
+      ];
+
+      echo json_encode($msg);
+    } else {
+      echo 'gabisa';
+    }
+  }
+
+  public function updatedata()
+  {
+    if ($this->request->isAJAX()) {
+
+      // $simpandata = $this->request->getPost();
+      $data = [
+        'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
+        'updated_at' => date("Y-m-d H:i:s"),
+      ];
+
+
+
+      $pj = new ModelPerizinan();
+      $id = $this->request->getVar('perijinan_id');
+      $pj->update($id, $data);
+
+
+      $msg = [
+        'sukses' => 'Berhasil pindah tangan',
+      ];
+
+
+      echo json_encode($msg);
+    } else {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+  }
+  public function updatedata2()
+  {
+    if ($this->request->isAJAX()) {
+
+      // $simpandata = $this->request->getPost();
+      $data = [
+        'jw_tenggang'  => $this->request->getPost('jw_tenggang'),
+        'updated_at' => date("Y-m-d H:i:s"),
+      ];
+
+      $pj = new ModelPerizinan();
+      $id = $this->request->getVar('perijinan_id');
+      $pj->update($id, $data);
+
+      $msg = [
+        'sukses' => 'Berhasil pindah tangan',
+      ];
+
+
+      echo json_encode($msg);
+    } else {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+  }
+
+  public function formperpanjang()
+  {
+    if ($this->request->isAJAX()) {
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelPerizinan();
+      $row = $pj->find($perijinan_id);
+
+      $data = [
+        // yang di lempar ke view => field
+        'perijinan_id' => $row['perijinan_id'],
+        'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
+        'alamat' => $row['alamat'],
+        'jenis_tanah' => $row['jenis_tanah'],
+        'lokasi_tanah' => $row['lokasi_tanah'],
+        'nomor_ijin' => $row['nomor_ijin'],
+        'tanggal_ijin' => $row['tanggal_ijin'],
+        'jw_disahkan' => $row['jw_disahkan'],
+        'jw_tenggang' => $row['jw_tenggang'],
+        'peruntukan' => $row['peruntukan'],
+        'luas' => $row['luas'],
+        'nilai_tarip' => $row['nilai_tarip'],
+        'nilai_retribusi' => $row['nilai_retribusi'],
+        'realisasi' => $row['realisasi'],
+        'keterangan' => $row['keterangan'],
+      ];
+
+
+      $msg = [
+        'sukses' => view('perijinan/modalperpanjang', $data)
+      ];
+
+      echo json_encode($msg);
+    } else {
+      echo 'gabisa';
+    }
+  }
+
+  public function detail()
+  {
+    if ($this->request->isAJAX()) {
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelPerizinan();
+      $row = $pj->find($perijinan_id);
+
+      $data = [
+        // yang di lempar ke view => field
+        'perijinan_id' => $row['perijinan_id'],
+        'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
+        'alamat' => $row['alamat'],
+        'jenis_tanah' => $row['jenis_tanah'],
+        'lokasi_tanah' => $row['lokasi_tanah'],
+        'nomor_ijin' => $row['nomor_ijin'],
+        'tanggal_ijin' => $row['tanggal_ijin'],
+        'jw_disahkan' => $row['jw_disahkan'],
+        'jw_tenggang' => $row['jw_tenggang'],
+        'peruntukan' => $row['peruntukan'],
+        'luas' => $row['luas'],
+        'nilai_tarip' => $row['nilai_tarip'],
+        'nilai_retribusi' => $row['nilai_retribusi'],
+        'realisasi' => $row['realisasi'],
+        'keterangan' => $row['keterangan'],
+      ];
+
+
+      $msg = [
+        'sukses' => view('perijinan/modaldetail', $data)
+      ];
+
+      echo json_encode($msg);
+    } else {
+      echo 'gabisa';
+    }
+  }
 }

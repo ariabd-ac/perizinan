@@ -38,8 +38,6 @@
       dataType: "json",
       success: function(response) {
         $('.viewdata').html(response.data);
-
-
       },
       error: function(xhr, ajaxOptions, thrownError) {
         swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);

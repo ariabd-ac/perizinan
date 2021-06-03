@@ -47,21 +47,18 @@
               <div class="form-group">
                 <label class="d-block">Tanggal Ijin</label>
                 <input type="date" name="tanggal_ijin" id="tanggal_ijin" class="form-control datepicker">
-                </a>
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
                 <label class="d-block">Disahkan</label>
                 <input type="date" name="jw_disahkan" id="jw_disahkan" class="form-control datepicker">
-                </a>
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
                 <label class="d-block">Tenggang</label>
                 <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker">
-                </a>
               </div>
             </div>
           </div>
