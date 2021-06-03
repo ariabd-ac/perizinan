@@ -32,6 +32,37 @@
 <div class="viewmodal" style="display: none;"></div>
 
 <script>
+
+  function cekMasaTenggang(data){
+    let listMasaTenggang=[]; //tampungan list masa tenggang
+    let today=new Date() // 
+    for (let index = 0; index < data.length; index++) {
+      const dt = data[index];
+      if(dt.jw_tenggang - today <= 12){ //if massa tenggang -today <=12 hari  
+        listMasaTenggang.push(dt.perijinan_id) // push to array listMasaTenggang
+      }      
+    }
+
+    if(listMasaTenggang.length >1){ 
+      insertOrUpdateTable(listMasaTenggang) // call function to update or insert data alert/message
+    }
+  }
+
+  function inserOrUpdateTeble(listMasaTenggang){
+    console.log('insert message masa tenggang')
+    // ajax hit controller
+
+    // controller will be included :
+    // 1. create new table message or add column status table perijinan
+    // 2. inserting or updating table
+  }
+
+  function getMessages(){
+    console.log('getMessages')
+    // get data messages
+  }
+
+
   function dataperijinan() {
     console.log('TERPANGGIL')
     $.ajax({
@@ -39,6 +70,7 @@
       dataType: "json",
       success: function(response) {
         console.log('RESPONSE=>',response)
+        cekMasaTenggang(response.data) 
         $('.viewdata').html(response.data);
       },
       error: function(xhr, ajaxOptions, thrownError) {
@@ -50,6 +82,7 @@
   }
   $(document).ready(function() {
     dataperijinan()
+    getMessages()//call function getMessages
 
     $('.tomboltambah').click(function(e) {
       e.preventDefault();
