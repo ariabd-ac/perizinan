@@ -33,13 +33,17 @@
 
 <script>
   function dataperijinan() {
+    console.log('TERPANGGIL')
     $.ajax({
       url: "<?= site_url('c_perizinan/ambildata') ?>",
       dataType: "json",
       success: function(response) {
+        console.log('RESPONSE=>',response)
         $('.viewdata').html(response.data);
       },
       error: function(xhr, ajaxOptions, thrownError) {
+        console.log(xhr.responseText)
+        // console.log()
         swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
       }
     });

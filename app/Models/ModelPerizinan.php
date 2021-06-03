@@ -20,11 +20,13 @@ class ModelPerizinan extends Model
 
 
 
-	public function getPerijinan($id = false)
+	public function getPerijinan($id = false,$korpokla_id=false)
 	{
 		if ($id === false) {
 			return $this->table('perijinan')
 				->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
+				// ->join('rf_korpokla','korpokla.id=users.korpokla','LEFT')
+				->where('users.korpokla',$korpokla_id)
 				->orderBy('perijinan.created_at', 'DESC')
 				->get()
 				->getResultArray();

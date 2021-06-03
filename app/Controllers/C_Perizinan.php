@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelPerizinan;
+use App\Models\ModelUsers;
 
 
 class C_Perizinan extends BaseController
@@ -10,6 +11,7 @@ class C_Perizinan extends BaseController
   public function __construct()
   {
     $this->perijinanModel = new ModelPerizinan();
+    $this->usersModel = new ModelUsers();
   }
 
   public function index()
@@ -20,8 +22,11 @@ class C_Perizinan extends BaseController
   public function ambildata()
   {
     if ($this->request->isAJAX()) {
-      $data['perijinan'] = $this->perijinanModel->getPerijinan();
-
+      $userData=$this->usersModel->getUser(session()->get('user_id'));
+      $id_korpokla=$userData['korpokla'];
+      
+      $data['perijinan'] = $this->perijinanModel->getPerijinan(false,$id_korpokla);
+      
       $msg = [
         'data' => view('perijinan/dataperijinan', $data)
       ];
