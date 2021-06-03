@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Database\Migrations;
+
+use CodeIgniter\Database\Migration;
+
+class Perizinan extends Migration
+{
+	public function up()
+	{
+		//
+		$this->forge->addField([
+			'perijinan_id'          => [
+				'type'           => 'BIGINT',
+				'constraint'     => 10,
+				'unsigned'       => true,
+				'auto_increment' => true,
+			],
+			'nama_pemegang_ijin'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'alamat' => [
+				'type' => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'jenis_tanah' => [
+				'type' => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'lokasi_tanah'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'nomor_ijin'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'tanggal_ijin'       => [
+				'type'       => 'DATE',
+			],
+			'jw_disahkan'       => [
+				'type'       => 'DATE',
+			],
+			'jw_tenggang'       => [
+				'type'       => 'DATE',
+			],
+			'peruntukan'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '50',
+			],
+			'luas'       => [
+				'type'       => 'DOUBLE',
+			],
+			'nilai_tarip'       => [
+				'type'       => 'DOUBLE',
+			],
+			'nilai_retribusi'       => [
+				'type'       => 'DOUBLE',
+			],
+			'realisasi'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '50',
+				'null' => 'true',
+			],
+			'keterangan'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '50',
+				'null' => 'true',
+			],
+			'created_at'       => [
+				'type'       => 'TIMESTAMP',
+			],
+		]);
+		$this->forge->addKey('perijinan_id', true);
+		$this->forge->createTable('perijinan');
+	}
+
+	public function down()
+	{
+		//
+		$this->forge->dropTable('perijinan');
+	}
+}

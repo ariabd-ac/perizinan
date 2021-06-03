@@ -15,6 +15,7 @@ class ModelUsers extends Model
 	{
 		if ($id === false) {
 			return $this->table('users')
+				->join('rf_korpokla', 'rf_korpokla.korpokla_id=users.korpokla', 'LEFT')
 				->get()
 				->getResultArray();
 		} else {

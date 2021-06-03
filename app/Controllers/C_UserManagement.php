@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelUsers;
+use App\Models\ModelKorpokla;
 
 
 class C_UserManagement extends BaseController
@@ -14,6 +15,7 @@ class C_UserManagement extends BaseController
   public function __construct()
   {
     $this->userModel = new ModelUsers();
+    $this->korpoklaModel = new ModelKorpokla();
   }
 
   public function index()
@@ -40,7 +42,9 @@ class C_UserManagement extends BaseController
 
   public function add()
   {
-    return view('userManagement/v_add');
+    $data['korpokla'] = $this->korpoklaModel->getKorpokla();
+    // dd($data);
+    return view('userManagement/v_add', $data);
   }
 
   public function edit($id = null)

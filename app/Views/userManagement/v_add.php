@@ -64,9 +64,10 @@
           <div class="form-group">
             <label>Korpokla</label>
             <select class="form-control" name="korpokla" id="korpokla">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
+              <option>-PILIH-</option>
+              <?php foreach ($korpokla as $key => $value) : ?>
+                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
