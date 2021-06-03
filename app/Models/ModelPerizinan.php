@@ -15,7 +15,7 @@ class ModelPerizinan extends Model
 	// protected $allowedFields     = [
 	// 	'perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'keterangan', 'created_at'
 	// ];
-	protected $allowedFields = ['perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'keterangan', 'created_at'];
+	protected $allowedFields = ['perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'keterangan', 'created_at', 'user_by'];
 
 
 
@@ -24,6 +24,8 @@ class ModelPerizinan extends Model
 	{
 		if ($id === false) {
 			return $this->table('perijinan')
+				->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
+				->orderBy('perijinan.created_at', 'DESC')
 				->get()
 				->getResultArray();
 		} else {

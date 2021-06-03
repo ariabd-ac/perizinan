@@ -111,6 +111,11 @@
             <input type="text" name="keterangan" id="keterangan" class="form-control">
             </a>
           </div>
+          <div class="form-group">
+            <label class="d-block">User by</label>
+            <input type="text" name="user_by" id="user_by" class="form-control">
+            </a>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -139,6 +144,7 @@
           $('.btnsimpan').html('Simpan');
         },
         success: function(response) {
+          console.log(response);
           // swal("Selamat!", "Data berhasil di simpan!", "success");
           if (response.sukses) {
             iziToast.success({
@@ -148,7 +154,6 @@
             });
             $('#modaltambah').modal('hide');
             dataperijinan();
-
           }
           // validasi
 

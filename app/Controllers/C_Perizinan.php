@@ -78,6 +78,7 @@ class C_Perizinan extends BaseController
 
 
       // $simpandata = $this->request->getPost();
+
       $data = [
         'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
         'alamat'  => $this->request->getPost('alamat'),
@@ -93,6 +94,7 @@ class C_Perizinan extends BaseController
         'nilai_retribusi' => $this->request->getPost('nilai_retribusi'),
         'realisasi' => $this->request->getPost('realisasi'),
         'keterangan' => $this->request->getPost('keterangan'),
+        'user_by' => session()->get('user_id'),
         'created_at' => date("Y-m-d H:i:s"),
       ];
 
@@ -104,6 +106,8 @@ class C_Perizinan extends BaseController
       $msg = [
         'sukses' => 'Data berhasil ke save',
         'error' => $pj,
+        'id_user' => session()->get('user_id'),
+        'data' => $data
       ];
 
 
@@ -276,6 +280,27 @@ class C_Perizinan extends BaseController
       echo json_encode($msg);
     } else {
       echo 'gabisa';
+    }
+  }
+
+  public function hapus()
+  {
+    if ($this->request->isAJAX()) {
+
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelPerizinan();
+
+
+      // $perijinan_id = 9;
+
+      $pj->delete($perijinan_id);
+
+      $msg = [
+        'sukses' => 'Berhasil dihapus',
+      ];
+
+      echo json_encode($msg);
     }
   }
 }

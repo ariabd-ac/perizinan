@@ -68,7 +68,14 @@ class Perizinan extends Migration
 				'constraint' => '50',
 				'null' => 'true',
 			],
+			'user_by'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '50',
+			],
 			'created_at'       => [
+				'type'       => 'TIMESTAMP',
+			],
+			'updated_at'       => [
 				'type'       => 'TIMESTAMP',
 			],
 		]);

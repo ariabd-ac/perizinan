@@ -8,6 +8,7 @@
       <!-- <th>Lokasi Tanah</th> -->
       <th>Nomor Ijin/Tanggal</th>
       <th>Jangka Waktu</th>
+      <th>Created By</th>
       <!-- <th>Peruntukan</th>
                 <th>Luas M Persegi</th>
                 <th>Nilai Tarif M Persegi(Rp)</th>
@@ -28,6 +29,7 @@
         <!-- <td><?= $value['lokasi_tanah'] ?></td> -->
         <td><?= $value['nomor_ijin'] ?> - <?= $value['tanggal_ijin'] ?></td>
         <td><?= $value['jw_disahkan'] ?> s/d <?= $value['jw_tenggang'] ?></td>
+        <td><?= $value['username'] ?></td>
         <!-- <td>Cocok tanam palawija</td>
                   <td>144,00</td>
                   <td>250</td>
@@ -43,6 +45,7 @@
         </td>
         <td>
           <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
+          <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
         </td>
       </tr>
     <?php endforeach; ?>
@@ -118,5 +121,41 @@
         console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
       }
     });
+  }
+
+  function hapus(perijinan_id) {
+    console.log(perijinan_id)
+    swal({
+      title: `Yakin ingin menghapus?`,
+      buttons: {
+        cancel: true,
+        confirm: "Confirm",
+      },
+    }).then((res) => {
+      if (res) {
+        $.ajax({
+          type: "get",
+          url: "<?= site_url('c_perizinan/hapus') ?>",
+          data: {
+            perijinan_id: perijinan_id
+          },
+          dataType: "json",
+          success: function(response) {
+            console.log(response)
+            if (response.sukses) {
+              swal({
+                icon: "success",
+                title: response.sukses,
+              });
+              dataperijinan();
+            }
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+          }
+        });
+      }
+    });
+
   }
 </script>
