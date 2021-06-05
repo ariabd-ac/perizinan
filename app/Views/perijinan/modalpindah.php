@@ -36,7 +36,8 @@
         url: $(this).attr("action"),
         data: $(this).serialize(),
         dataType: "json",
-        beforeSend: function() {
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
           $('.btnsimpan').attr('disable', 'disabled');
           $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"></i>');
         },
@@ -54,6 +55,7 @@
             });
             $('#modalpindah').modal('hide');
             dataperijinan();
+            dataperijinanDefault();
 
           }
           // validasi

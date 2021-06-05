@@ -32,7 +32,7 @@ class Filters extends BaseConfig
 	public $globals = [
 		'before' => [
 			// 'honeypot',
-			'csrf',
+			'csrf'=>['except' => ['messages/insert']],
 		],
 		'after'  => [
 			'toolbar',
@@ -66,6 +66,7 @@ class Filters extends BaseConfig
 			'user-management*',
 			'perizinan*',
 			'korpokla*',
+			'messages*'
 		]]
 	];
 }

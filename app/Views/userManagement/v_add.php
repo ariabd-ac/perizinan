@@ -22,7 +22,7 @@
         <h4>Masukan data dengan benar!</h4>
       </div>
       <div class="card-body">
-        <form action="<?= site_url('/user-management') ?>" method="post" autocomplete="off">
+        <form action="<?= base_url('/user-management') ?>" method="post" autocomplete="off">
           <?= csrf_field() ?>
           <div class="form-group">
             <label>Full Name</label>

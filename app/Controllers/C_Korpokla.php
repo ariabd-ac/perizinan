@@ -26,12 +26,13 @@ class C_Korpokla extends BaseController
 
     if ($this->db->affectedRows() > 0) {
       return redirect()->to(site_url('korpokla'))->with('success', 'Data tersimpan');
+    }else{
+      die($this->db);
     }
   }
 
   public function edit($id = null)
   {
-
     if ($id != null) {
       $query = $this->db->table('rf_korpokla')->getWhere(['korpokla_id' => $id]);
       // print_r($query);

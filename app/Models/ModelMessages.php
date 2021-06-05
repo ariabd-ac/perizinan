@@ -10,6 +10,7 @@ class ModelMessages extends Model
   protected $primaryKey           = 'id';
   protected $useTimestamps        = true;
   protected $useAutoIncrement     = true;
+  protected $allowedFields = ['id','type_message','text_message','status_message','id_perijinan','created_at'];
 
   public function getAll($id = false)
   {

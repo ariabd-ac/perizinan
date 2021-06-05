@@ -87,6 +87,9 @@
   <script src="<?= base_url() ?>/template/assets/js/page/modules-sweetalert.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/page/modules-toastr.js"></script>
   <script>
+    $(document).ready(function(){
+
+    })
     function pindah(perijinan_id) {
       console.log(perijinan_id)
       $.ajax({
@@ -162,7 +165,7 @@
       for (let index = 0; index < listMasaTenggang.length; index++) {
         const dt = listMasaTenggang[index];
         let message = {
-          'text_message': 'Perizeinan Dalam Masa Tenggang',
+          'text_message': 'Perizinan Dalam Masa Tenggang',
           'status_message': '1',
           'id_perijinan': dt,
         }
@@ -172,7 +175,8 @@
           data: message,
           dataType: "json",
           beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
+            console.log(xhr)
+            // xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
           },
           success: function(response) {
             console.log(response);
@@ -242,8 +246,10 @@
     }
 
     // call function
-    getMessages();
-    dataperijinanDefault();
+    $(document).ready(function() {
+      getMessages();
+      dataperijinanDefault();
+    })
   </script>
 
 </body>

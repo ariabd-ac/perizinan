@@ -10,6 +10,8 @@ class ModelUsers extends Model
 	protected $primaryKey           = 'user_id';
 	protected $useTimestamps        = true;
 	protected $useAutoIncrement     = true;
+	protected $allowedFields = ['user_id','full_name','username','password','korpokla','level','created_at'];
+
 
 	public function getUser($id = false)
 	{
