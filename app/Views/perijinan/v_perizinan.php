@@ -10,11 +10,11 @@
 
 <section class="section">
   <div class="section-header">
-    <h1>Blank Page</h1>
+    <h1>Perizinan</h1>
   </div>
 
   <div class="section-body">
-    <h3>Perizinan</h3>
+    <!-- <h3>Perizinan</h3> -->
     <hr />
     <div class="card">
       <div class="card-header">
@@ -32,23 +32,23 @@
 <div class="viewmodal" style="display: none;"></div>
 
 <script>
-
-  function cekMasaTenggang(data){
-    let listMasaTenggang=[]; //tampungan list masa tenggang
-    let today=new Date() // 
+  function cekMasaTenggang(data) {
+    let listMasaTenggang = []; //tampungan list masa tenggang
+    let today = new Date() // 
     for (let index = 0; index < data.length; index++) {
       const dt = data[index];
-      if(dt.jw_tenggang - today <= 12){ //if massa tenggang -today <=12 hari  
+      if (dt.jw_tenggang - today <= 12) { //if massa tenggang -today <=12 hari  
         listMasaTenggang.push(dt.perijinan_id) // push to array listMasaTenggang
-      }      
+      }
     }
 
-    if(listMasaTenggang.length >1){ 
+    if (listMasaTenggang.length > 1) {
       insertOrUpdateTable(listMasaTenggang) // call function to update or insert data alert/message
     }
+    console.log('list: ', listMasaTenggang)
   }
 
-  function inserOrUpdateTeble(listMasaTenggang){
+  function inserOrUpdateTeble(listMasaTenggang) {
     console.log('insert message masa tenggang')
     // ajax hit controller
 
@@ -57,7 +57,7 @@
     // 2. inserting or updating table
   }
 
-  function getMessages(){
+  function getMessages() {
     console.log('getMessages')
     // get data messages
   }
@@ -69,8 +69,8 @@
       url: "<?= site_url('c_perizinan/ambildata') ?>",
       dataType: "json",
       success: function(response) {
-        console.log('RESPONSE=>',response)
-        cekMasaTenggang(response.data) 
+        // console.log('RESPONSE=>', response)
+        cekMasaTenggang(response.data)
         $('.viewdata').html(response.data);
       },
       error: function(xhr, ajaxOptions, thrownError) {
@@ -80,9 +80,10 @@
       }
     });
   }
+
   $(document).ready(function() {
     dataperijinan()
-    getMessages()//call function getMessages
+    getMessages() //call function getMessages
 
     $('.tomboltambah').click(function(e) {
       e.preventDefault();

@@ -12,9 +12,9 @@
         <div class="modal-body">
           <input type="hidden" name="perijinan_id" id="perijinan_id" class="form-control" value="<?= $perijinan_id ?>" required>
           <div class="form-group">
-                <label class="d-block">Tenggang</label>
-                <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker" value="<?= $jw_tenggang ?>">
-              </div>
+            <label class="d-block">Tenggang</label>
+            <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker" value="<?= $jw_tenggang ?>">
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -22,11 +22,11 @@ class C_Perizinan extends BaseController
   public function ambildata()
   {
     if ($this->request->isAJAX()) {
-      $userData=$this->usersModel->getUser(session()->get('user_id'));
-      $id_korpokla=$userData['korpokla'];
-      
-      $data['perijinan'] = $this->perijinanModel->getPerijinan(false,$id_korpokla);
-      
+      $userData = $this->usersModel->getUser(session()->get('user_id'));
+      $id_korpokla = $userData['korpokla'];
+
+      $data['perijinan'] = $this->perijinanModel->getPerijinan(false, $id_korpokla);
+
       $msg = [
         'data' => view('perijinan/dataperijinan', $data)
       ];
@@ -202,7 +202,7 @@ class C_Perizinan extends BaseController
       $pj->update($id, $data);
 
       $msg = [
-        'sukses' => 'Berhasil pindah tangan',
+        'sukses' => 'Berhasil memperpanjang',
       ];
 
 
