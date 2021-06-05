@@ -86,6 +86,120 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url() ?>/template/assets/js/page/modules-sweetalert.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/page/modules-toastr.js"></script>
+  <script>
+      function cekMasaTenggang(data){
+        let listMasaTenggang=[]; //tampungan list masa tenggang
+        let today=new Date() // 
+        console.log(data)
+        console.log(data.length)
+        for (let index = 0; index < data.length; index++) {
+          const dt = data[index];
+          let cek=Math.floor((new Date(dt.jw_tenggang) - today) / (24*60*60*1000))  
+          // console.log(today-5,'today')  
+          if(cek <= 12){ //if massa tenggang -today <=12 hari
+            listMasaTenggang.push(dt.perijinan_id) // push to array listMasaTenggang
+          }      
+        }
+        
+        // console.log(listMasaTenggang.length)
+        if(listMasaTenggang.length >0){ 
+          console.log(listMasaTenggang,'if')
+          insertOrUpdateTable(listMasaTenggang) // call function to update or insert data alert/message
+        }
+      }
+
+      function insertOrUpdateTable(listMasaTenggang){
+        console.log('insert message masa tenggang')
+        // ajax hit controller
+
+        // controller will be included :
+        // 1. create new table message or add column status table perijinan
+        // 2. inserting or updating table
+        for (let index = 0; index < listMasaTenggang.length; index++) {
+          const dt = listMasaTenggang[index];
+          let message={
+            'text_message' :'Perizeinan Dalam Masa Tenggang',
+              'status_message':'1',
+              'id_perijinan' :dt,
+          }
+          $.ajax({
+              type: "post",
+              url: "<?php echo base_url('/messages/insert')?>",
+              data: message,
+              dataType: "json",
+              beforeSend: function (xhr) {       
+                xhr.setRequestHeader('X-CSRF-Token' , "<?= csrf_hash() ?>");       
+              },
+              success: function(response) {
+                console.log(response);
+                // swal("Selamat!", "Data berhasil di simpan!", "success");
+                if (response.sukses) {
+                  // dataperijinan();
+                  alert('Sukses Input Messages')
+                }
+              },
+              error: function(xhr, ajaxOptions, thrownError) {
+                // swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+                // location.href(<?= site_url('perizinan') ?>)
+                console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+              }
+            });
+        }
+      }
+
+      function getMessages(){
+        console.log('getMessages')
+        // get data messages
+        $.ajax({
+          url: "<?= site_url('c_messages/getAll') ?>",
+          dataType: "json",
+          success: function(response) {
+            // console.log(response)
+            generateNotification(response);
+            let cek=0;
+            for (let index = 0; index < response.list_message.length; index++) {
+              const el = response.list_message[index];
+              if(el.status_message == '1'){
+                cek++;
+              }
+            }
+            if(cek >0){
+              swal('Anda Mempunyai Pesan yang belum terbaca,Silahkan klik tombol notification untuk melihat detail');
+            }
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            console.log(xhr.responseText)
+            // console.log()
+            swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+          }
+        });
+      }
+      function dataperijinanDefault() {
+        $.ajax({
+          url: "<?= site_url('c_perizinan/ambildata') ?>",
+          dataType: "json",
+          success: function(response) {
+            cekMasaTenggang(response.list_perijinan) 
+            // $('.viewdata').html(response.data);
+          },
+          error: function(xhr, ajaxOptions, thrownError) {
+            console.log(xhr.responseText)
+            // console.log()
+            swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+          }
+        });
+      }
+
+      // function DOM
+
+      function generateNotification(dt){
+        $('#notif').html(dt.view)
+      }
+
+      // call function
+      getMessages();
+      dataperijinanDefault();
+  </script>
 
 </body>
 

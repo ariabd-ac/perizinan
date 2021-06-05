@@ -56,6 +56,7 @@ $routes->post('/korpokla', 'C_Korpokla::store');
 $routes->get('/korpokla/edit/(:segment)', 'C_Korpokla::edit/$1');
 $routes->put('/korpokla/(:segment)', 'C_Korpokla::update/$1');
 
+$routes->post('/messages/insert','C_Messages::insert');
 
 /*
  * --------------------------------------------------------------------

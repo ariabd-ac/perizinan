@@ -28,7 +28,8 @@ class C_Perizinan extends BaseController
       $data['perijinan'] = $this->perijinanModel->getPerijinan(false, $id_korpokla);
 
       $msg = [
-        'data' => view('perijinan/dataperijinan', $data)
+        'data' => view('perijinan/dataperijinan', $data),
+        'list_perijinan'=>$data['perijinan']
       ];
 
       // dd($msg);
