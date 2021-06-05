@@ -44,7 +44,12 @@
               </tr>
             </tbody>
           </table>
+
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="pindah('<?= $perijinan_id ?>')"><i class="fa fa-search-plus"></i></button>
+        <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="perpanjang('<?= $perijinan_id ?>')"><i class="fa fa-trash"></i></button>
       </div>
     </div>
   </div>

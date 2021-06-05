@@ -15,7 +15,7 @@
                 <th>Nilai Retribusi M Persegi(Rp)</th> -->
       <!-- <th>Relasi</th>
                 <th>Keterangan</th> -->
-      <th>Aksi</th>
+      <!-- <th>Aksi</th> -->
       <th>Aksi detail</th>
     </tr>
   </thead>
@@ -36,13 +36,12 @@
                   <td>360.000</td> -->
         <!-- <td>LUNAS</td> -->
 
-        <td>
+        <!-- <td>
           <div class="row">
             <button type="button" style="margin-right: 10px;" class="btn btn-sm btn-info" title="pindah tangan" data-original-title="pindah tangan" onclick="pindah('<?= $value['perijinan_id'] ?>')"><i class="fa fa-handshake"></i></button>
-            <!-- <hr /> -->
             <button type="button" class="btn btn-sm btn-danger" title="perpanjang" data-original-title="perpanjang" onclick="perpanjang('<?= $value['perijinan_id'] ?>')"><i class="fa fa-stopwatch"></i></button>
           </div>
-        </td>
+        </td> -->
         <td>
           <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
           <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
@@ -57,49 +56,49 @@
     $('#dataperijinan').DataTable();
   });
 
-  function pindah(perijinan_id) {
-    console.log(perijinan_id)
-    $.ajax({
-      type: "get",
-      url: "<?= site_url('c_perizinan/formpindah') ?>",
-      data: {
-        perijinan_id: perijinan_id,
+  // function pindah(perijinan_id) {
+  //   console.log(perijinan_id)
+  //   $.ajax({
+  //     type: "get",
+  //     url: "<?= site_url('c_perizinan/formpindah') ?>",
+  //     data: {
+  //       perijinan_id: perijinan_id,
 
-      },
-      dataType: "json",
-      success: function(response) {
-        if (response.sukses) {
-          $('.viewmodal').html(response.sukses).show();
-          $('#modalpindah').modal('show');
-        }
-      },
-      error(xhr, ajaxOptions, thrownError) {
-        console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-      }
-    });
-  }
+  //     },
+  //     dataType: "json",
+  //     success: function(response) {
+  //       if (response.sukses) {
+  //         $('.viewmodal').html(response.sukses).show();
+  //         $('#modalpindah').modal('show');
+  //       }
+  //     },
+  //     error(xhr, ajaxOptions, thrownError) {
+  //       console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+  //     }
+  //   });
+  // }
 
-  function perpanjang(perijinan_id) {
-    console.log(perijinan_id)
-    $.ajax({
-      type: "get",
-      url: "<?= site_url('c_perizinan/formperpanjang') ?>",
-      data: {
-        perijinan_id: perijinan_id
-      },
-      dataType: "json",
-      success: function(response) {
-        console.log(response)
-        if (response.sukses) {
-          $('.viewmodal').html(response.sukses).show();
-          $('#modalperpanjang').modal('show');
-        }
-      },
-      error: function(xhr, ajaxOptions, thrownError) {
-        console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-      }
-    });
-  }
+  // function perpanjang(perijinan_id) {
+  //   console.log(perijinan_id)
+  //   $.ajax({
+  //     type: "get",
+  //     url: "<?= site_url('c_perizinan/formperpanjang') ?>",
+  //     data: {
+  //       perijinan_id: perijinan_id
+  //     },
+  //     dataType: "json",
+  //     success: function(response) {
+  //       console.log(response)
+  //       if (response.sukses) {
+  //         $('.viewmodal').html(response.sukses).show();
+  //         $('#modalperpanjang').modal('show');
+  //       }
+  //     },
+  //     error: function(xhr, ajaxOptions, thrownError) {
+  //       console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+  //     }
+  //   });
+  // }
 
   function detail(perijinan_id) {
     console.log(perijinan_id)
