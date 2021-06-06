@@ -18,7 +18,7 @@ class C_Messages extends BaseController
 
   public function index()
   {
-    return view('perijinan/v_perizinan');
+    return view('messages/v_messages');
   }
 
   public function getAll()
@@ -29,7 +29,8 @@ class C_Messages extends BaseController
       
       $msg = [
         'list_message'=>$data['messages'],
-        'view'=>view('layout/notif', $data)
+        'view'=>view('layout/notif', $data),
+        'viewMessage'=>view('messages/datamessage', $data)
       ];
 
       // dd($msg);
@@ -37,6 +38,46 @@ class C_Messages extends BaseController
       echo json_encode($msg);
     } else {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+  }
+
+  public function detail(){
+    if ($this->request->isAJAX()) {
+      $perijinan_id = $this->request->getVar('perijinan_id');
+      $notif_id = $this->request->getVar('notif_id');
+
+      $pj = new ModelPerizinan();
+      $row = $pj->find($perijinan_id);
+
+      $data = [
+        // yang di lempar ke view => field
+        'perijinan_id' => $row['perijinan_id'],
+        'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
+        'alamat' => $row['alamat'],
+        'jenis_tanah' => $row['jenis_tanah'],
+        'lokasi_tanah' => $row['lokasi_tanah'],
+        'nomor_ijin' => $row['nomor_ijin'],
+        'tanggal_ijin' => $row['tanggal_ijin'],
+        'jw_disahkan' => $row['jw_disahkan'],
+        'jw_tenggang' => $row['jw_tenggang'],
+        'peruntukan' => $row['peruntukan'],
+        'luas' => $row['luas'],
+        'nilai_tarip' => $row['nilai_tarip'],
+        'nilai_retribusi' => $row['nilai_retribusi'],
+        'realisasi' => $row['realisasi'],
+        'keterangan' => $row['keterangan'],
+      ];
+
+      $this->msgModel->updateStatusMsg($notif_id);
+
+
+      $msg = [
+        'sukses' => view('perijinan/modaldetail', $data)
+      ];
+
+      echo json_encode($msg);
+    } else {
+      echo 'gabisa';
     }
   }
 
