@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // $routes->get('/', 'Home::index');
 $routes->get('/login', 'Auth::login');
+$routes->post('/auth/loginProcess', 'Auth::loginProcess');
 
 
 $routes->addRedirect('/', 'home');
@@ -40,8 +41,20 @@ $routes->addRedirect('/', 'home');
 // $routes->get('/register', 'Authentication::register');
 
 
-
+//perizinan routes
 $routes->get('/perizinan', 'C_Perizinan::index');
+$routes->get('/c_perizinan/ambildata', 'C_Perizinan::ambildata');
+$routes->get('c_perizinan/formtambah', 'C_Perizinan::formtambah');
+$routes->post('c_perizinan/simpandata', 'C_Perizinan::simpandata');
+$routes->post('c_perizinan/updatedata', 'C_Perizinan::updatedata');
+$routes->post('c_perizinan/updatedata2', 'C_Perizinan::updatedata2');
+$routes->get('c_perizinan/detail/', 'C_Perizinan::detail');
+$routes->get('c_perizinan/hapus/', 'C_Perizinan::hapus');
+$routes->get('c_perizinan/formpindah', 'C_Perizinan::formpindah');
+$routes->get('c_perizinan/formperpanjang', 'C_Perizinan::formperpanjang');
+
+
+//user-management routes
 $routes->get('/user-management', 'C_UserManagement::index');
 $routes->get('/user-management/add', 'C_UserManagement::add');
 $routes->post('/user-management', 'C_UserManagement::store');
@@ -56,8 +69,11 @@ $routes->post('/korpokla', 'C_Korpokla::store');
 $routes->get('/korpokla/edit/(:segment)', 'C_Korpokla::edit/$1');
 $routes->put('/korpokla/(:segment)', 'C_Korpokla::update/$1');
 
+//message routes
 $routes->get('/messages','C_Messages::index');
+$routes->get('/c_messages/detail','C_Messages::detail');
 $routes->post('/messages/insert','C_Messages::insert');
+$routes->get('/c_messages/getAll','C_Messages::getAll');
 
 /*
  * --------------------------------------------------------------------

@@ -161,9 +161,11 @@
       for (let index = 0; index < data.length; index++) {
         const dt = data[index];
         let cek = Math.floor((new Date(dt.jw_tenggang) - today) / (24 * 60 * 60 * 1000))
+      
         // console.log(today-5,'today')  
         if (cek <= 12) { //if massa tenggang -today <=12 hari
-          listMasaTenggang.push(dt.perijinan_id) // push to array listMasaTenggang
+          dt.tenggang_hari=cek
+          listMasaTenggang.push(dt) // push to array listMasaTenggang
         }
       }
 
@@ -183,9 +185,9 @@
       for (let index = 0; index < listMasaTenggang.length; index++) {
         const dt = listMasaTenggang[index];
         let message = {
-          'text_message': 'Perizinan Dalam Masa Tenggang',
+          'text_message': `Perizinan dengan nomor ${dt.nomor_ijin},atas nama ${dt.nama_pemegang_ijin} Dalam Masa Tenggang ${dt.tenggang_hari} hari(${dt.jw_tenggang})`,
           'status_message': '1',
-          'id_perijinan': dt,
+          'id_perijinan': dt.perijinan_id,
         }
         $.ajax({
           type: "post",
