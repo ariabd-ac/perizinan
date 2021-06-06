@@ -111,7 +111,7 @@
     }
 
     function pindah(perijinan_id) {
-      
+     
       $.ajax({
         type: "get",
         url: "<?= site_url('c_perizinan/formpindah') ?>",
@@ -202,7 +202,6 @@
             // console.log(response);
             // swal("Selamat!", "Data berhasil di simpan!", "success");
             if (response.sukses) {
-              // dataperijinan();
               alert('Sukses Input Messages')
             }
           },
@@ -255,6 +254,41 @@
           // console.log(xhr.responseText)
           // console.log()
           swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+        }
+      });
+    }
+
+    function hapusMsg(perijinan_id) {
+    
+      swal({
+        title: `Yakin ingin menghapus?`,
+        buttons: {
+          cancel: true,
+          confirm: "Confirm",
+        },
+      }).then((res) => {
+        if (res) {
+          $.ajax({
+            type: "get",
+            url: "<?= site_url('c_messages/hapus') ?>",
+            data: {
+              perijinan_id: perijinan_id
+            },
+            dataType: "json",
+            success: function(response) {
+              console.log(response)
+              if (response.sukses) {
+                swal({
+                  icon: "success",
+                  title: response.sukses,
+                });
+                getMessages();
+              }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+              console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+            }
+          });
         }
       });
     }

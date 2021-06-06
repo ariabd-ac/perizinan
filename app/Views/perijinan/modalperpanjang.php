@@ -52,6 +52,7 @@
               message: response.sukses,
             });
             $('#modalperpanjang').modal('hide');
+            $('.modal').modal('hide');
             dataperijinan();
             dataperijinanDefault();
 

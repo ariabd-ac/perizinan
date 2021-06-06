@@ -16,8 +16,8 @@
         <td><?= $value['created_at'] ?></td>
        
         <td>
-          <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
-          <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detailMessage(<?php echo $value['id_perijinan']?>,<?php echo $value['id']?>)" data-idperijinan="<?= $value['id_perijinan']?>"><i class="fa fa-search-plus"></i></button>
+          <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapusMsg('<?= $value['id'] ?>')"><i class="fa fa-trash"></i></button>
         </td>
       </tr>
     <?php endforeach; ?>
@@ -29,55 +29,12 @@
     $('#dataperijinan').DataTable();
   });
 
-  // function pindah(perijinan_id) {
-  //   console.log(perijinan_id)
-  //   $.ajax({
-  //     type: "get",
-  //     url: "<?= site_url('c_perizinan/formpindah') ?>",
-  //     data: {
-  //       perijinan_id: perijinan_id,
-
-  //     },
-  //     dataType: "json",
-  //     success: function(response) {
-  //       if (response.sukses) {
-  //         $('.viewmodal').html(response.sukses).show();
-  //         $('#modalpindah').modal('show');
-  //       }
-  //     },
-  //     error(xhr, ajaxOptions, thrownError) {
-  //       console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-  //     }
-  //   });
-  // }
-
-  // function perpanjang(perijinan_id) {
-  //   console.log(perijinan_id)
-  //   $.ajax({
-  //     type: "get",
-  //     url: "<?= site_url('c_perizinan/formperpanjang') ?>",
-  //     data: {
-  //       perijinan_id: perijinan_id
-  //     },
-  //     dataType: "json",
-  //     success: function(response) {
-  //       console.log(response)
-  //       if (response.sukses) {
-  //         $('.viewmodal').html(response.sukses).show();
-  //         $('#modalperpanjang').modal('show');
-  //       }
-  //     },
-  //     error: function(xhr, ajaxOptions, thrownError) {
-  //       console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-  //     }
-  //   });
-  // }
 
   function detail(perijinan_id) {
     console.log(perijinan_id)
     $.ajax({
       type: "get",
-      url: "<?= site_url('c_perizinan/detail') ?>",
+      url: "<?= site_url('c_messages/detail') ?>",
       data: {
         perijinan_id: perijinan_id
       },
@@ -95,39 +52,5 @@
     });
   }
 
-  function hapus(perijinan_id) {
-    console.log(perijinan_id)
-    swal({
-      title: `Yakin ingin menghapus?`,
-      buttons: {
-        cancel: true,
-        confirm: "Confirm",
-      },
-    }).then((res) => {
-      if (res) {
-        $.ajax({
-          type: "get",
-          url: "<?= site_url('c_perizinan/hapus') ?>",
-          data: {
-            perijinan_id: perijinan_id
-          },
-          dataType: "json",
-          success: function(response) {
-            console.log(response)
-            if (response.sukses) {
-              swal({
-                icon: "success",
-                title: response.sukses,
-              });
-              dataperijinan();
-            }
-          },
-          error: function(xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-          }
-        });
-      }
-    });
-
-  }
+ 
 </script>

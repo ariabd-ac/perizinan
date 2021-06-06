@@ -105,12 +105,34 @@ class C_Messages extends BaseController
           ];
     
           echo json_encode($msg);
+      }else{
+        echo json_encode($cekIdPerijinan);
       }
-      echo json_encode($cekIdPerijinan);
 
 
     } else {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+  }
+
+  public function hapus()
+  {
+    if ($this->request->isAJAX()) {
+
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelMessages();
+
+
+      // $perijinan_id = 9;
+
+      $pj->delete($perijinan_id);
+
+      $msg = [
+        'sukses' => 'Berhasil dihapus',
+      ];
+
+      echo json_encode($msg);
     }
   }
 
