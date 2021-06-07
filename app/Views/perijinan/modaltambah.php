@@ -104,7 +104,15 @@
           <div class="form-group">
             <label class="d-block">Realisasi</label>
             <input type="text" name="realisasi" id="realisasi" class="form-control">
-            </a>
+          </div>
+          <div class="form-group">
+            <label>Korpokla</label>
+            <select class="form-control" name="korpokla" id="korpokla">
+              <option>-PILIH-</option>
+              <?php foreach ($korpokla as $key => $value) : ?>
+                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+              <?php endforeach; ?>
+            </select>
           </div>
           <div class="form-group">
             <label class="d-block">Keterangan</label>

@@ -105,8 +105,8 @@
           <div class="form-group">
             <label class="d-block">Realisasi</label>
             <input type="text" name="realisasi" id="realisasi" value="<?= $realisasi ?>" class="form-control">
-            </a>
           </div>
+          <?= $korpokla_by ?>
           <div class="form-group">
             <label class="d-block">Keterangan</label>
             <input type="text" name="keterangan" id="keterangan" value="<?= $keterangan ?>" class="form-control">

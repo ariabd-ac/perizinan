@@ -23,6 +23,7 @@
                 <th>Nilai Tarif M Persegi(Rp)</th>
                 <th>Nilai Retribusi M Persegi(Rp)</th>
                 <th>Relasi</th>
+                <th>korpokla</th>
                 <th>Keterangan</th>
 
               </tr>
@@ -40,6 +41,7 @@
                 <td><?= $nilai_tarip ?></td>
                 <td><?= $nilai_retribusi ?></td>
                 <td><?= $realisasi ?></td>
+                <td><?= $korpokla_by ?></td>
                 <td><?= $keterangan ?></td>
               </tr>
             </tbody>
