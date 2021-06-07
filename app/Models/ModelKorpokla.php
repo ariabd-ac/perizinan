@@ -10,7 +10,7 @@ class ModelKorpokla extends Model
   protected $primaryKey           = 'korpokla_id';
   protected $useTimestamps        = true;
   protected $useAutoIncrement     = true;
-  protected $allowedFields = ['korpokla_id','korpokla_name','desc'];
+  protected $allowedFields = ['korpokla_id', 'korpokla_name', 'desc'];
   public function getKorpokla($id = false)
   {
     if ($id === false) {

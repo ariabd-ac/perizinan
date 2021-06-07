@@ -63,6 +63,11 @@ class Perizinan extends Migration
 				'constraint' => '50',
 				'null' => 'true',
 			],
+			'korpokla_by'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '50',
+				'null' => 'true',
+			],
 			'keterangan'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '50',

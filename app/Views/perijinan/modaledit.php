@@ -1,4 +1,4 @@
-<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,71 +7,72 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="c_perizinan/simpandata" method="" class="formperizinan">
+      <form action="c_perizinan/updatedata3" method="" class="formperizinan">
         <?= csrf_field() ?>
+        <input type="hidden" name="perijinan_id" id="perijinan_id" class="form-control" value="<?= $perijinan_id ?>" required>
         <div class="modal-body">
           <div class="form-group">
             <label>Nama Pemegang Ijin</label>
             <div class="input-group">
-              <input type="text" name="nama_pemegang_ijin" id="nama_pemegang_ijin" class="form-control" required>
+              <input type="text" name="nama_pemegang_ijin" id="nama_pemegang_ijin" class="form-control" value="<?= $nama_pemegang_ijin ?>" required>
             </div>
 
           </div>
           <div class="form-group">
             <label>Alamat</label>
             <div class="input-group">
-              <textarea name="alamat" cols="100" rows="5" id="alamat" class="form-control"></textarea>
+              <textarea name="alamat" cols="100" rows="5" id="alamat" class="form-control"><?= $alamat ?></textarea>
             </div>
 
           </div>
           <div class="form-group">
             <label>Jenis Tanah</label>
             <div class="input-group">
-              <input type="text" name="jenis_tanah" id="jenis_tanah" class="form-control">
+              <input type="text" name="jenis_tanah" id="jenis_tanah" value="<?= $jenis_tanah ?>" class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label>Lokasi Tanah</label>
             <div class="input-group">
-              <input type="text" name="lokasi_tanah" id="lokasi_tanah" class="form-control">
+              <input type="text" name="lokasi_tanah" id="lokasi_tanah" value="<?= $lokasi_tanah ?>" class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label>Nomor Ijin</label>
             <div class="input-group">
-              <input type="text" name="nomor_ijin" id="nomor_ijin" class="form-control">
+              <input type="text" name="nomor_ijin" id="nomor_ijin" value="<?= $nomor_ijin ?>" class="form-control">
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">Tanggal Terbit Ijin</label>
-                <input type="date" name="tanggal_ijin" id="tanggal_ijin" class="form-control datepicker">
+                <label class="d-block">Tanggal Ijin</label>
+                <input type="date" name="tanggal_ijin" id="tanggal_ijin" value="<?= $tanggal_ijin ?>" class="form-control datepicker">
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">TMT Awal</label>
-                <input type="date" name="jw_disahkan" id="jw_disahkan" class="form-control datepicker">
+                <label class="d-block">Disahkan</label>
+                <input type="date" name="jw_disahkan" id="jw_disahkan" value="<?= $jw_disahkan ?>" class="form-control datepicker">
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">TMT Akhir</label>
-                <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker">
+                <label class="d-block">Tenggang</label>
+                <input type="date" name="jw_tenggang" id="jw_tenggang" value="<?= $jw_tenggang ?>" class="form-control datepicker">
               </div>
             </div>
           </div>
           <div class="form-group">
             <label>Peruntukan</label>
             <div class="input-group">
-              <input type="text" name="peruntukan" id="peruntukan" class="form-control">
+              <input type="text" name="peruntukan" id="peruntukan" value="<?= $peruntukan ?>" class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label>Luas</label>
             <div class="input-group">
-              <input type="number" name="luas" id="luas" class="form-control">
+              <input type="number" name="luas" id="luas" value="<?= $luas ?>" class="form-control">
               <div class="input-group-prepend">
                 <div class="input-group-text">
                   m2
@@ -87,7 +88,7 @@
                   Rp
                 </div>
               </div>
-              <input type="number" name="nilai_tarip" id="nilai_tarip" class="form-control">
+              <input type="number" name="nilai_tarip" id="nilai_tarip" class="form-control" value="<?= $nilai_tarip ?>">
             </div>
           </div>
           <div class="form-group">
@@ -98,32 +99,24 @@
                   Rp
                 </div>
               </div>
-              <input type="number" name="nilai_retribusi" id="nilai_retribusi" class="form-control">
+              <input type="number" name="nilai_retribusi" id="nilai_retribusi" value="<?= $nilai_retribusi ?>" class="form-control">
             </div>
           </div>
           <div class="form-group">
             <label class="d-block">Realisasi</label>
-            <input type="text" name="realisasi" id="realisasi" class="form-control">
+            <input type="text" name="realisasi" id="realisasi" value="<?= $realisasi ?>" class="form-control">
           </div>
-          <div class="form-group">
-            <label>Korpokla</label>
-            <select class="form-control" name="korpokla" id="korpokla">
-              <option>-PILIH-</option>
-              <?php foreach ($korpokla as $key => $value) : ?>
-                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
-              <?php endforeach; ?>
-            </select>
-          </div>
+          <?= $korpokla_by ?>
           <div class="form-group">
             <label class="d-block">Keterangan</label>
-            <input type="text" name="keterangan" id="keterangan" class="form-control">
+            <input type="text" name="keterangan" id="keterangan" value="<?= $keterangan ?>" class="form-control">
             </a>
           </div>
-          <!-- <div class="form-group">
+          <div class="form-group">
             <label class="d-block">User by</label>
             <input type="text" name="user_by" id="user_by" class="form-control">
             </a>
-          </div> -->
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -161,7 +154,7 @@
               position: 'topRight',
               message: 'Berhasil disimpan',
             });
-            $('#modaltambah').modal('hide');
+            $('#modaledit').modal('hide');
             dataperijinan();
             dataperijinanDefault();
           }
