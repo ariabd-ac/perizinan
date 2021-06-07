@@ -1,19 +1,21 @@
-<div class="modal fade" id="modalperpanjang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalpindah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ingin Memperpanjang?</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ingin Mengganti?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="c_perizinan/updatedata2" method="" class="formperizinan">
+      <form action="c_perizinan/updatedata" method="" class="formperizinan">
         <?= csrf_field() ?>
         <div class="modal-body">
           <input type="hidden" name="perijinan_id" id="perijinan_id" class="form-control" value="<?= $perijinan_id ?>" required>
           <div class="form-group">
-            <label class="d-block">Tenggang</label>
-            <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker" value="<?= $jw_tenggang ?>">
+            <label>Nama Pemegang Ijin</label>
+            <div class="input-group">
+              <input type="text" name="nama_pemegang_ijin" id="nama_pemegang_ijin" class="form-control" value="<?= $nama_pemegang_ijin ?>" required>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -51,8 +53,7 @@
               position: 'topRight',
               message: response.sukses,
             });
-            $('#modalperpanjang').modal('hide');
-            $('.modal').modal('hide');
+            $('#modalpindah').modal('hide');
             dataperijinan();
             dataperijinanDefault();
 

@@ -8,7 +8,7 @@
       <div class="dropdown-list-content dropdown-list-icons">
         <?php foreach ($messages as $dt) : ?>
             
-        <a href="#" class="dropdown-item <?php echo ($dt['status_message'] == '1') ? 'dropdown-item-unread':'' ?>">
+        <a href="#" onclick="detailMessage(<?php echo $dt['id_perijinan']?>,<?php echo $dt['id']?>)" data-idperijinan="<?= $dt['id_perijinan']?>" class="dropdown-item notif-item <?php echo ($dt['status_message'] == '1') ? 'dropdown-item-unread':'' ?>">
           <div class="dropdown-item-icon bg-primary text-white">
           <i class="fas fa-bell"></i>
           </div>
@@ -20,6 +20,6 @@
         <?php endforeach; ?>
       </div>
       <div class="dropdown-footer text-center">
-        <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+        <a href="<?= base_url('/messages')?>">View All <i class="fas fa-chevron-right"></i></a>
       </div>
     </div>

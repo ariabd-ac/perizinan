@@ -22,7 +22,7 @@ class Messages extends Migration
 			],
 			'text_message'       => [
 				'type'       => 'VARCHAR',
-				'constraint' => '50',
+				'constraint' => 'MAX',
 			],
 			'status_message'       => [
 				'type'       => 'VARCHAR',

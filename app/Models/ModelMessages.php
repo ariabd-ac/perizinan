@@ -28,6 +28,10 @@ class ModelMessages extends Model
     }
   }
 
+  public function updateStatusMsg($id){
+    return $this->db->query("UPDATE messages SET status_message='2' WHERE id='$id'");
+  }
+
 
   public function cekIdPerijinan($id = false)
   {

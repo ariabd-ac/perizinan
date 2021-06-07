@@ -48,10 +48,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-sm btn-danger" title="Pndah Nama" data-original-title="Lihat detail" onclick="pindah('<?= $perijinan_id ?>')"><i class="fa fa-search-plus"></i></button>
-        <button type="button" class="btn btn-sm btn-warning" title="Perpanjang" data-original-title="hapus" onclick="perpanjang('<?= $perijinan_id ?>')"><i class="fa fa-trash"></i></button> -->
-        <button type="button" class="btn btn-sm btn-primary" title="Pndah Nama" data-original-title="Lihat detail" onclick="pindah('<?= $perijinan_id ?>')">Pindah Nama</button>
-        <button type="button" class="btn btn-sm btn-info" title="Perpanjang" data-original-title="hapus" onclick="perpanjang('<?= $perijinan_id ?>')">Perpanjang</button>
+        <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="pindah('<?= $perijinan_id ?>')"><i class="fa fa-search-plus"></i></button>
+        <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="perpanjang('<?= $perijinan_id ?>')"><i class="fa fa-trash"></i></button>
       </div>
     </div>
   </div>
@@ -71,7 +69,7 @@
         data: $(this).serialize(),
         dataType: "json",
         beforeSend: function(xhr) {
-          xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
+            xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
           $('.btnsimpan').attr('disable', 'disabled');
           $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"></i>');
         },
@@ -88,7 +86,6 @@
               message: response.sukses,
             });
             $('#modaldetail').modal('hide');
-            $('.modal-backdrop').remove();
             dataperijinan();
 
           }
