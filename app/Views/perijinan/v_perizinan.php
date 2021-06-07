@@ -39,6 +39,7 @@
       success: function(response) {
         cekMasaTenggang(response.list_perijinan)
         $('.viewdata').html(response.data);
+        $('.modal-backdrop').remove();
       },
       error: function(xhr, ajaxOptions, thrownError) {
         console.log(xhr.responseText)

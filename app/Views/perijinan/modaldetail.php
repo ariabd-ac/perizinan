@@ -88,7 +88,7 @@
               message: response.sukses,
             });
             $('#modaldetail').modal('hide');
-            $('.modal-backdrop').remove();
+
             dataperijinan();
 
           }
