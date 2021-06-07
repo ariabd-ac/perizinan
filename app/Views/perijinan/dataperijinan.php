@@ -5,7 +5,7 @@
       <th>Nama Pemegang Ijin</th>
       <th>Alamat</th>
       <th>Jenis Tanah</th>
-      <th>Lokasi Tanah</th>
+      <th>Lokasi Yang Dimohon</th>
       <th>Nomor Ijin/Tanggal</th>
       <th>Jangka Waktu</th>
       <th>Created By</th>
@@ -25,8 +25,8 @@
         <td><?= $key + 1 ?></td>
         <td><?= $value['nama_pemegang_ijin'] ?></td>
         <td><?= $value['alamat'] ?></td>
-        <td><?= $value['jenis_tanah'] ?></td>
         <td><?= $value['lokasi_tanah'] ?></td>
+        <td><?= $value['jenis_tanah'] ?></td>
         <td><?= $value['nomor_ijin'] ?> - <?= $value['tanggal_ijin'] ?></td>
         <td><?= $value['jw_disahkan'] ?> s/d <?= $value['jw_tenggang'] ?></td>
         <td><?= $value['username'] ?></td>
