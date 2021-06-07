@@ -69,7 +69,7 @@
         data: $(this).serialize(),
         dataType: "json",
         beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
+          xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
           $('.btnsimpan').attr('disable', 'disabled');
           $('.btnsimpan').html('<i class="fa fa-spin fa-spinner"></i>');
         },
@@ -86,6 +86,7 @@
               message: response.sukses,
             });
             $('#modaldetail').modal('hide');
+            $('.modal-backdrop').remove();
             dataperijinan();
 
           }
