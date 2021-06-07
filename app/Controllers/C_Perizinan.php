@@ -24,8 +24,14 @@ class C_Perizinan extends BaseController
     if ($this->request->isAJAX()) {
       $userData = $this->usersModel->getUser(session()->get('user_id'));
       $id_korpokla = $userData['korpokla'];
+      $perizinan;
 
-      $data['perijinan'] = $this->perijinanModel->getPerijinan(false, $id_korpokla);
+      if(session()->get('level')=='admin'){
+        $perijinan = $this->perijinanModel->getAll();
+      }else{
+        $perijinan = $this->perijinanModel->getPerijinan(false, $id_korpokla);
+      }
+      $data['perijinan'] = $perijinan;
 
       $msg = [
         'data' => view('perijinan/dataperijinan', $data),

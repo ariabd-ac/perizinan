@@ -24,8 +24,13 @@ class C_Messages extends BaseController
   public function getAll()
   {
     if ($this->request->isAJAX()) {
-      
-      $data['messages'] = $this->msgModel->getAll();
+      $messages;
+      if(session()->get('level')=='admin'){
+        $messages = $this->msgModel->getAll();
+      }else{
+        $messages = $this->msgModel->getAll(false,session('user_id'));
+      }
+      $data['messages'] = $messages;
       
       $msg = [
         'list_message'=>$data['messages'],

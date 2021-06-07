@@ -12,20 +12,30 @@ class ModelMessages extends Model
   protected $useAutoIncrement     = true;
   protected $allowedFields = ['id','type_message','text_message','status_message','id_perijinan','created_at'];
 
-  public function getAll($id = false)
+  public function getAll($id = false,$user_id=false)
   {
     if ($id === false) {
-      return $this->table('messages')
+      if($user_id){
+        return $this->table('messages')
         ->join('perijinan','perijinan.perijinan_id=messages.id_perijinan','LEFT')
+        ->where('perijinan.user_by',$user_id)
         ->orderBy('messages.status_message','ASC')
         ->get()
         ->getResultArray();
+      }else{
+        return $this->table('messages')
+          ->join('perijinan','perijinan.perijinan_id=messages.id_perijinan','LEFT')
+          ->orderBy('messages.status_message','ASC')
+          ->get()
+          ->getResultArray();
+      }
     } else {
       return $this->table('messages')
         ->where('korpokla_id', $id)
         ->get()
         ->getRowArray();
     }
+
   }
 
   public function updateStatusMsg($id){

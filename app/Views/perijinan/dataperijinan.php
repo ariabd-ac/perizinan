@@ -5,7 +5,7 @@
       <th>Nama Pemegang Ijin</th>
       <th>Alamat</th>
       <th>Jenis Tanah</th>
-      <th>Lokasi Yang Dimohon</th>
+      <th>Lokasi Tanah</th>
       <th>Nomor Ijin/Tanggal</th>
       <th>Jangka Waktu</th>
       <th>Created By</th>
@@ -18,23 +18,11 @@
         <td><?= $key + 1 ?></td>
         <td><?= $value['nama_pemegang_ijin'] ?></td>
         <td><?= $value['alamat'] ?></td>
-        <td><?= $value['lokasi_tanah'] ?></td>
         <td><?= $value['jenis_tanah'] ?></td>
+        <td><?= $value['lokasi_tanah'] ?></td>
         <td><?= $value['nomor_ijin'] ?> - <?= $value['tanggal_ijin'] ?></td>
         <td><?= $value['jw_disahkan'] ?> s/d <?= $value['jw_tenggang'] ?></td>
         <td><?= $value['username'] ?></td>
-        <!-- <td>Cocok tanam palawija</td>
-                  <td>144,00</td>
-                  <td>250</td>
-                  <td>360.000</td> -->
-        <!-- <td>LUNAS</td> -->
-
-        <!-- <td>
-          <div class="row">
-            <button type="button" style="margin-right: 10px;" class="btn btn-sm btn-info" title="pindah tangan" data-original-title="pindah tangan" onclick="pindah('<?= $value['perijinan_id'] ?>')"><i class="fa fa-handshake"></i></button>
-            <button type="button" class="btn btn-sm btn-danger" title="perpanjang" data-original-title="perpanjang" onclick="perpanjang('<?= $value['perijinan_id'] ?>')"><i class="fa fa-stopwatch"></i></button>
-          </div>
-        </td> -->
         <td>
           <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
           <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>

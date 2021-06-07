@@ -45,19 +45,19 @@
           <div class="row">
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">Tanggal Ijin</label>
+                <label class="d-block">Tanggal Terbit Ijin</label>
                 <input type="date" name="tanggal_ijin" id="tanggal_ijin" class="form-control datepicker">
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">Disahkan</label>
+                <label class="d-block">TMT Awal</label>
                 <input type="date" name="jw_disahkan" id="jw_disahkan" class="form-control datepicker">
               </div>
             </div>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4">
               <div class="form-group">
-                <label class="d-block">Tenggang</label>
+                <label class="d-block">TMT Akhir</label>
                 <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker">
               </div>
             </div>
@@ -111,11 +111,11 @@
             <input type="text" name="keterangan" id="keterangan" class="form-control">
             </a>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label class="d-block">User by</label>
             <input type="text" name="user_by" id="user_by" class="form-control">
             </a>
-          </div>
+          </div> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
