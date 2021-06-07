@@ -9,13 +9,6 @@
       <th>Nomor Ijin/Tanggal</th>
       <th>Jangka Waktu</th>
       <th>Created By</th>
-      <!-- <th>Peruntukan</th>
-                <th>Luas M Persegi</th>
-                <th>Nilai Tarif M Persegi(Rp)</th>
-                <th>Nilai Retribusi M Persegi(Rp)</th> -->
-      <!-- <th>Relasi</th>
-                <th>Keterangan</th> -->
-      <!-- <th>Aksi</th> -->
       <th>Aksi detail</th>
     </tr>
   </thead>
