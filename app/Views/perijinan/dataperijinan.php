@@ -38,6 +38,7 @@
         <td>
           <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
           <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
+          <button type="button" class="btn btn-sm btn-success" title="edit" data-original-title="edit" onclick="edit('<?= $value['perijinan_id'] ?>')"><i class="far fa-edit"></i></button>
         </td>
       </tr>
     <?php endforeach; ?>
@@ -114,6 +115,30 @@
       }
     });
   }
+
+  function edit(perijinan_id) {
+    console.log(perijinan_id)
+    $.ajax({
+      type: "get",
+      url: "<?= site_url('c_perizinan/edit') ?>",
+      data: {
+        perijinan_id: perijinan_id
+      },
+      dataType: "json",
+      success: function(response) {
+        console.log(response)
+        if (response.sukses) {
+          $('.viewmodal').html(response.sukses).show();
+          $('#modaledit').modal('show');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
+      }
+    });
+  }
+
+
 
   function hapus(perijinan_id) {
     console.log(perijinan_id)
