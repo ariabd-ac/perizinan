@@ -1,5 +1,4 @@
 <?php
-
 // Path to the front controller (this file)
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR);
 
@@ -17,14 +16,17 @@ chdir(__DIR__);
 
 // Load our paths config file
 // This is the line that might need to be changed, depending on your folder structure.
-require realpath(FCPATH . '../app/Config/Paths.php') ?: FCPATH . '../app/Config/Paths.php';
+// require realpath(FCPATH . '../perijinan_sub_core/app/Config/Paths.php') ?: FCPATH . '../perijinan_sub_core/app/Config/Paths.php';
+require realpath(FCPATH . '../app/Config/Paths.php');
 // ^^^ Change this if you move your application folder
 
 $paths = new Config\Paths();
 
 // Location of the framework bootstrap file.
 $bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
 $app       = require realpath($bootstrap) ?: $bootstrap;
+
 
 /*
  *---------------------------------------------------------------
@@ -33,4 +35,5 @@ $app       = require realpath($bootstrap) ?: $bootstrap;
  * Now that everything is setup, it's time to actually fire
  * up the engines and make this app do its thang.
  */
+
 $app->run();
