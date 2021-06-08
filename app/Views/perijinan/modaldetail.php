@@ -12,6 +12,7 @@
           <table class="table table-bordered table-md" id="dataperijinan">
             <thead>
               <tr>
+                <th>Nomor Rekomtek/Tanggal</th>
                 <th>Nama Pemegang Ijin</th>
                 <th>Alamat</th>
                 <th>Jenis Tanah</th>
@@ -30,6 +31,7 @@
             </thead>
             <tbody>
               <tr>
+                <td><?= $nomor_rekomtek ?> / <?= $tanggal_rekomtek ?></td>
                 <td><?= $nama_pemegang_ijin ?></td>
                 <td><?= $alamat ?></td>
                 <td><?= $jenis_tanah ?></td>

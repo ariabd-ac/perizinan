@@ -10,12 +10,29 @@
       <form action="c_perizinan/simpandata" method="" class="formperizinan">
         <?= csrf_field() ?>
         <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Nomor Rekomtek</label>
+                <div class="input-group">
+                  <input type="text" name="nomor_rekomtek" id="nomor_rekomtek" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Tanggal Rekomtek</label>
+                <div class="input-group">
+                  <input type="date" name="tanggal_rekomtek" id="tanggal_rekomtek" class="form-control datepicker">
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label>Nama Pemegang Ijin</label>
             <div class="input-group">
               <input type="text" name="nama_pemegang_ijin" id="nama_pemegang_ijin" class="form-control" required>
             </div>
-
           </div>
           <div class="form-group">
             <label>Alamat</label>
@@ -43,19 +60,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">Tanggal Terbit Ijin</label>
                 <input type="date" name="tanggal_ijin" id="tanggal_ijin" class="form-control datepicker">
               </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">TMT Awal</label>
                 <input type="date" name="jw_disahkan" id="jw_disahkan" class="form-control datepicker">
               </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">TMT Akhir</label>
                 <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker">
@@ -157,10 +174,11 @@
           console.log(response);
           // swal("Selamat!", "Data berhasil di simpan!", "success");
           if (response.sukses) {
+            console.log(response)
             iziToast.success({
               title: 'OK',
               position: 'topRight',
-              message: 'Berhasil disimpan',
+              message: response.sukses,
             });
             $('#modaltambah').modal('hide');
             dataperijinan();

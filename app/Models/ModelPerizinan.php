@@ -15,7 +15,7 @@ class ModelPerizinan extends Model
 	// protected $allowedFields     = [
 	// 	'perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'keterangan', 'created_at'
 	// ];
-	protected $allowedFields = ['perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'korpokla_by', 'keterangan', 'created_at', 'user_by'];
+	protected $allowedFields = ['perijinan_id', 'nomor_rekomtek', 'tanggal_rekomtek', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'korpokla_by', 'keterangan', 'created_at', 'user_by'];
 
 
 
@@ -38,13 +38,14 @@ class ModelPerizinan extends Model
 		}
 	}
 
-	public function getAll(){
+	public function getAll()
+	{
 		return $this->table('perijinan')
-				->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
-				// ->join('rf_korpokla','korpokla.id=users.korpokla','LEFT')
-				// ->where('users.korpokla',$korpokla_id)
-				->orderBy('perijinan.created_at', 'DESC')
-				->get()
-				->getResultArray();
+			->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
+			// ->join('rf_korpokla','korpokla.id=users.korpokla','LEFT')
+			// ->where('users.korpokla',$korpokla_id)
+			->orderBy('perijinan.created_at', 'DESC')
+			->get()
+			->getResultArray();
 	}
 }

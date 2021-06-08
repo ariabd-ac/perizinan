@@ -56,10 +56,10 @@ class C_Perizinan extends BaseController
       $data['korpokla'] = $this->korpoklaModel->getKorpokla();
 
 
-
       $msg = [
         'data' => view('perijinan/modaltambah', $data)
       ];
+
       echo json_encode($msg);
     } else {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
@@ -68,9 +68,9 @@ class C_Perizinan extends BaseController
   public function simpandata()
   {
     if ($this->request->isAJAX()) {
-
-
       $data = [
+        'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
+        'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
         'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
         'alamat'  => $this->request->getPost('alamat'),
         'jenis_tanah'  => $this->request->getPost('jenis_tanah'),
@@ -89,6 +89,8 @@ class C_Perizinan extends BaseController
         'user_by' => session()->get('user_id'),
         'created_at' => date("Y-m-d H:i:s"),
       ];
+
+      // echo $data;
 
       $pj = new ModelPerizinan();
 
@@ -249,6 +251,8 @@ class C_Perizinan extends BaseController
 
       $data = [
         // yang di lempar ke view => field
+        'nomor_rekomtek' => $row['nomor_rekomtek'],
+        'tanggal_rekomtek' => $row['tanggal_rekomtek'],
         'perijinan_id' => $row['perijinan_id'],
         'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
         'alamat' => $row['alamat'],
@@ -313,6 +317,8 @@ class C_Perizinan extends BaseController
 
       $data = [
         // yang di lempar ke view => field
+        'nomor_rekomtek' => $row['nomor_rekomtek'],
+        'tanggal_rekomtek' => $row['tanggal_rekomtek'],
         'perijinan_id' => $row['perijinan_id'],
         'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
         'alamat' => $row['alamat'],
@@ -351,6 +357,8 @@ class C_Perizinan extends BaseController
       // $simpandata = $this->request->getPost();
       $data = [
         // 'jw_tenggang'  => $this->request->getPost('jw_tenggang'),
+        'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
+        'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
         'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
         'alamat'  => $this->request->getPost('alamat'),
         'jenis_tanah'  => $this->request->getPost('jenis_tanah'),
