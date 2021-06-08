@@ -27,11 +27,11 @@ class C_Perizinan extends BaseController
     if ($this->request->isAJAX()) {
       $userData = $this->usersModel->getUser(session()->get('user_id'));
       $id_korpokla = $userData['korpokla'];
-      $perizinan;
+      // $perizinan;
 
-      if(session()->get('level')=='admin'){
+      if (session()->get('level') == 'admin') {
         $perijinan = $this->perijinanModel->getAll();
-      }else{
+      } else {
         $perijinan = $this->perijinanModel->getPerijinan(false, $id_korpokla);
       }
       $data['perijinan'] = $perijinan;
@@ -327,8 +327,8 @@ class C_Perizinan extends BaseController
         'nilai_tarip' => $row['nilai_tarip'],
         'nilai_retribusi' => $row['nilai_retribusi'],
         'realisasi' => $row['realisasi'],
-        'korpokla_by'   => isset($row['korpokla_name']) ? $row['korpokla_name'] : '',
-        // 'korpokla_id' => $row['korpokla_id'],
+        'korpokla_by'   => isset($row['korpokla_name']) ? $row['korpokla_name'] : 1,
+        'korpokla_id' => $row['korpokla_id'],
         'keterangan' => $row['keterangan'],
       ];
 

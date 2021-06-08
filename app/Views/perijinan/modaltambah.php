@@ -106,11 +106,12 @@
             <input type="text" name="realisasi" id="realisasi" class="form-control">
           </div>
           <div class="form-group">
-            <label>Korpokla</label>
-            <select class="form-control" name="korpokla" id="korpokla">
-              <option>-PILIH-</option>
+            <label>Korpokla</label><br />
+            <small style="color: red;">Wajib isi</small>
+            <select class="form-control" name="korpokla_by" id="korpokla" required>
+              <option value="">-PILIH-</option>
               <?php foreach ($korpokla as $key => $value) : ?>
-                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+                <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
