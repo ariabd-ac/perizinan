@@ -70,10 +70,20 @@ $routes->get('/korpokla/edit/(:segment)', 'C_Korpokla::edit/$1');
 $routes->put('/korpokla/(:segment)', 'C_Korpokla::update/$1');
 
 //message routes
-$routes->get('/messages','C_Messages::index');
-$routes->get('/c_messages/detail','C_Messages::detail');
-$routes->post('/messages/insert','C_Messages::insert');
-$routes->get('/c_messages/getAll','C_Messages::getAll');
+$routes->get('/messages', 'C_Messages::index');
+$routes->get('/c_messages/detail', 'C_Messages::detail');
+$routes->post('/messages/insert', 'C_Messages::insert');
+$routes->get('/c_messages/getAll', 'C_Messages::getAll');
+
+
+// regulasi routes
+$routes->get('/regulasi/add', 'C_Regulasi::create');
+$routes->post('/regulasi', 'C_Regulasi::save');
+$routes->get('/regulasi', 'C_Regulasi::index');
+$routes->get('/regulasi/download/(:segment)', 'C_Regulasi::download/$1');
+$routes->delete('/regulasi/(:segment)', 'C_Regulasi::destroy/$1');
+
+
 
 /*
  * --------------------------------------------------------------------
