@@ -80,6 +80,10 @@ class Perizinan extends Migration
 				'constraint' => '50',
 				'null' => 'true',
 			],
+			'file_ktp'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '100',
+			],
 			'user_by'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '50',

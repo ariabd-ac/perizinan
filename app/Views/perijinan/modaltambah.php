@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="c_perizinan/simpandata" method="" class="formperizinan">
+      <form action="c_perizinan/simpandata" method="" class="formperizinan" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="modal-body">
           <div class="row">
@@ -137,6 +137,12 @@
             <input type="text" name="keterangan" id="keterangan" class="form-control">
             </a>
           </div>
+          <div class="form-group">
+            <label class="d-block">Upload KTP</label>
+            <small style="color: red;">Wajib isi</small>
+            <input type="file" class="form-control" id="file_ktp" name="file_ktp" required>
+            </a>
+          </div>
           <!-- <div class="form-group">
             <label class="d-block">User by</label>
             <input type="text" name="user_by" id="user_by" class="form-control">
@@ -158,6 +164,7 @@
       e.preventDefault();
       $.ajax({
         type: "post",
+        enctype: 'multipart/form-data',
         url: $(this).attr("action"),
         data: $(this).serialize(),
         dataType: "json",

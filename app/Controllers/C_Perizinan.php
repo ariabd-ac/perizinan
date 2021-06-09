@@ -56,6 +56,7 @@ class C_Perizinan extends BaseController
       $data['korpokla'] = $this->korpoklaModel->getKorpokla();
 
 
+
       $msg = [
         'data' => view('perijinan/modaltambah', $data)
       ];
@@ -68,6 +69,11 @@ class C_Perizinan extends BaseController
   public function simpandata()
   {
     if ($this->request->isAJAX()) {
+
+      $dataKtp = $this->request->getFile('file_ktp');
+      $fileName = $dataKtp->getRandomName();
+
+
       $data = [
         'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
         'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
@@ -86,11 +92,13 @@ class C_Perizinan extends BaseController
         'realisasi' => $this->request->getPost('realisasi'),
         'korpokla_by' => $this->request->getPost('korpokla_by'),
         'keterangan' => $this->request->getPost('keterangan'),
+        'file_ktp' => $fileName,
         'user_by' => session()->get('user_id'),
         'created_at' => date("Y-m-d H:i:s"),
       ];
 
       // echo $data;
+      // die;
 
       $pj = new ModelPerizinan();
 
@@ -269,6 +277,7 @@ class C_Perizinan extends BaseController
         'realisasi' => $row['realisasi'],
         'korpokla_by' => $row['korpokla_name'],
         'keterangan' => $row['keterangan'],
+        'file_ktp' => $row['file_ktp'],
       ];
 
 
@@ -302,6 +311,64 @@ class C_Perizinan extends BaseController
       ];
 
       echo json_encode($msg);
+    }
+  }
+
+  public function create()
+  {
+    $data['korpokla'] = $this->korpoklaModel->getKorpokla();
+    return view('perijinan/v_addPerijinan', $data);
+  }
+  public function store()
+  {
+    if (!$this->validate([
+      'file_ktp' => [
+        'rules' => 'uploaded[file_ktp]|mime_in[file_ktp,image/jpg,image/jpeg,image/gif,image/png]|max_size[file_ktp,2048]',
+        'errors' => [
+          'uploaded' => 'Harus Ada File yang diupload',
+          'ext_in' => 'File Extention Harus Berupa image/jpg,image/jpeg,image/gif,image/png',
+          'max_size' => 'Ukuran File Maksimal 2 MB'
+        ]
+
+      ]
+    ])) {
+      session()->setFlashdata('error', $this->validator->listErrors());
+      return redirect()->back()->withInput();
+    }
+
+    $dataBerkas = $this->request->getFile('file_ktp');
+    $fileName = $dataBerkas->getRandomName();
+
+    $data = [
+      'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
+      'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
+      'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
+      'alamat'  => $this->request->getPost('alamat'),
+      'jenis_tanah'  => $this->request->getPost('jenis_tanah'),
+      'lokasi_tanah' => $this->request->getPost('lokasi_tanah'),
+      'nomor_ijin' => $this->request->getPost('nomor_ijin'),
+      'tanggal_ijin' => $this->request->getPost('tanggal_ijin'),
+      'jw_disahkan' => $this->request->getPost('jw_disahkan'),
+      'jw_tenggang' => $this->request->getPost('jw_tenggang'),
+      'peruntukan' => $this->request->getPost('peruntukan'),
+      'luas' => $this->request->getPost('luas'),
+      'nilai_tarip' => $this->request->getPost('nilai_tarip'),
+      'nilai_retribusi' => $this->request->getPost('nilai_retribusi'),
+      'realisasi' => $this->request->getPost('realisasi'),
+      'korpokla_by' => $this->request->getPost('korpokla_by'),
+      'keterangan' => $this->request->getPost('keterangan'),
+      'file_ktp' => $fileName,
+      'user_by' => session()->get('user_id'),
+      'created_at' => date("Y-m-d H:i:s"),
+    ];
+
+    $pj = new ModelPerizinan();
+
+    $pj->insert($data);
+
+    if ($pj) {
+      $dataBerkas->move('uploads/ktp/', $fileName);
+      return redirect()->to(site_url('perizinan'))->with('success', 'Data tersimpan');
     }
   }
 

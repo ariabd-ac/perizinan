@@ -13,12 +13,34 @@
     <h1>Perizinan</h1>
   </div>
 
+  <?php if (session()->getFlashdata('success')) : ?>
+    <div class="alert alert-success alert-dismissable show fade">
+      <div class="alert-body">
+        <button class="close" data-dismissable>x</button>
+        <b>Succes!</b>
+        <?= session()->getFlashdata('success') ?>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <?php if (session()->getFlashdata('error')) : ?>
+    <div class="alert alert-danger alert-dismissable show fade">
+      <div class="alert-body">
+        <button class="close" data-dismissable>x</button>
+        <b>Error!</b>
+        <?= session()->getFlashdata('error') ?>
+      </div>
+    </div>
+  <?php endif; ?>
+
+
   <div class="section-body">
     <!-- <h3>Perizinan</h3> -->
     <hr />
     <div class="card">
       <div class="card-header">
-        <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button>
+        <a href="<?= site_url('perizinan/create') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+        <!-- <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button> -->
       </div>
       <div class="card-body">
         <div class="table-responsive viewdata">

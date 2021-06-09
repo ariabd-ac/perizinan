@@ -26,6 +26,7 @@
                 <th>Relasi</th>
                 <th>korpokla</th>
                 <th>Keterangan</th>
+                <th>KTP</th>
 
               </tr>
             </thead>
@@ -45,6 +46,12 @@
                 <td><?= $realisasi ?></td>
                 <td><?= $korpokla_by ?></td>
                 <td><?= $keterangan ?></td>
+                <td>
+                  <img style="
+                    width: 100px;                   
+                    height: 50px;
+                  " src="<?= base_url() . "/uploads/ktp/" . $file_ktp; ?>" alt="ktp">
+                </td>
               </tr>
             </tbody>
           </table>
