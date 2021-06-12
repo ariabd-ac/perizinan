@@ -310,7 +310,7 @@ class C_Perizinan extends BaseController
 
       $pj = new ModelPerizinan();
       $row = $pj->getPerijinan($perijinan_id);
-
+      
       $data = [
         // yang di lempar ke view => field
         'perijinan_id' => $row['perijinan_id'],

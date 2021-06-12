@@ -31,7 +31,7 @@ class ModelPerizinan extends Model
 				->getResultArray();
 		} else {
 			return $this->table('perijinan')
-				->join('rf_korpokla', 'rf_korpokla.korpokla_id=perijinan.korpokla_by')
+				->join('rf_korpokla', 'rf_korpokla.korpokla_id=perijinan.korpokla_by','LEFT')
 				->where('perijinan_id', $id)
 				->get()
 				->getRowArray();

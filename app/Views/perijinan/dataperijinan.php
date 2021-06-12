@@ -1,3 +1,10 @@
+<div class="row">
+  <div class="col-md-4">
+    
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+</div>
 <table class="table table-bordered table-md" id="dataperijinan">
   <thead>
     <tr>
