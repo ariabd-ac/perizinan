@@ -43,6 +43,8 @@ $routes->addRedirect('/', 'home');
 
 //perizinan routes
 $routes->get('/perizinan', 'C_Perizinan::index');
+$routes->post('/perizinan', 'C_Perizinan::store');
+$routes->get('/perizinan/create', 'C_Perizinan::create');
 $routes->get('/c_perizinan/ambildata', 'C_Perizinan::ambildata');
 $routes->get('c_perizinan/formtambah', 'C_Perizinan::formtambah');
 $routes->post('c_perizinan/simpandata', 'C_Perizinan::simpandata');
@@ -70,10 +72,20 @@ $routes->get('/korpokla/edit/(:segment)', 'C_Korpokla::edit/$1');
 $routes->put('/korpokla/(:segment)', 'C_Korpokla::update/$1');
 
 //message routes
-$routes->get('/messages','C_Messages::index');
-$routes->get('/c_messages/detail','C_Messages::detail');
-$routes->post('/messages/insert','C_Messages::insert');
-$routes->get('/c_messages/getAll','C_Messages::getAll');
+$routes->get('/messages', 'C_Messages::index');
+$routes->get('/c_messages/detail', 'C_Messages::detail');
+$routes->post('/messages/insert', 'C_Messages::insert');
+$routes->get('/c_messages/getAll', 'C_Messages::getAll');
+
+
+// regulasi routes
+$routes->get('/regulasi/add', 'C_Regulasi::create');
+$routes->post('/regulasi', 'C_Regulasi::save');
+$routes->get('/regulasi', 'C_Regulasi::index');
+$routes->get('/regulasi/download/(:segment)', 'C_Regulasi::download/$1');
+$routes->delete('/regulasi/(:segment)', 'C_Regulasi::destroy/$1');
+
+
 
 /*
  * --------------------------------------------------------------------

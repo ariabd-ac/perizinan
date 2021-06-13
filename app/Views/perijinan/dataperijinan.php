@@ -9,6 +9,7 @@
   <thead>
     <tr>
       <th>#</th>
+      <th>Nomor Rekomtek/Tanggal</th>
       <th>Nama Pemegang Ijin</th>
       <th>Alamat</th>
       <th>Jenis Tanah</th>
@@ -23,6 +24,7 @@
     <?php foreach ($perijinan as $key => $value) : ?>
       <tr>
         <td><?= $key + 1 ?></td>
+        <td><?= $value['nomor_rekomtek'] ?> / <?= $value['tanggal_rekomtek'] ?></td>
         <td><?= $value['nama_pemegang_ijin'] ?></td>
         <td><?= $value['alamat'] ?></td>
         <td><?= $value['jenis_tanah'] ?></td>

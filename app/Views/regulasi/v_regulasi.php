@@ -37,26 +37,36 @@
     <hr />
     <div class="card">
       <div class="card-header">
-        <a href="<?= site_url('korpokla/add') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+        <a href="<?= site_url('regulasi/add') ?>" class="btn btn-primary">Upload</a>
       </div>
       <div class="card-body table-responsive">
-        <table class="table table-bordered table-md">
-          <tbody>
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Desc</th>
+              <th>No</th>
+              <th>Gambar</th>
+              <th>Keterangan</th>
               <th>Action</th>
             </tr>
-            <?php foreach ($korpokla  as $key => $value) : ?>
+          </thead>
+          <tbody>
+            <?php
+            $no  = 1;
+            foreach ($berkas as $row) {
+            ?>
               <tr>
-                <td><?= $key + 1 ?></td>
-                <td><?= $value->korpokla_name ?></td>
-                <td><?= $value->desc ?></td>
+                <td><?= $no++; ?></td>
+                <td>
+                  <iframe src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" frameborder="0"></iframe>
+
+                  <!-- <img width="150px" class="img-thumbnail" src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>"> -->
+
+                </td>
+                <td><?= $row['keterangan'] ?></td>
                 <td>
                   <div class="">
-                    <a href="<?= site_url('korpokla/edit/' . $value->korpokla_id) ?>" class="btn-sm btn-secondary"><i class="fa fa-edit"></i></a>
-                    <form action="<?= site_url('korpokla/' . $value->korpokla_id) ?>" method="post" class="d-inline">
+                    <a class="btn btn-info" href="<?= base_url('regulasi'); ?>/c_regulasi/download/<?= $row['id_regulasi']; ?>">Download</a>
+                    <form action="<?= site_url('regulasi/' . $row['id_regulasi']) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <input type="hidden" name="_method" value="DELETE">
                       <button class="btn-sm btn-danger">
@@ -65,13 +75,17 @@
                     </form>
                   </div>
                 </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
       </div>
-
+      </tr>
+    <?php
+            }
+    ?>
+    </tbody>
+    </table>
     </div>
+
+  </div>
+  </div>
   </div>
 </section>
 

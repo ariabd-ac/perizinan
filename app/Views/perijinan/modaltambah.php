@@ -7,15 +7,32 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="c_perizinan/simpandata" method="" class="formperizinan">
+      <form action="c_perizinan/simpandata" method="" class="formperizinan" enctype="multipart/form-data">
         <?= csrf_field() ?>
         <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Nomor Rekomtek</label>
+                <div class="input-group">
+                  <input type="text" name="nomor_rekomtek" id="nomor_rekomtek" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Tanggal Rekomtek</label>
+                <div class="input-group">
+                  <input type="date" name="tanggal_rekomtek" id="tanggal_rekomtek" class="form-control datepicker">
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="form-group">
             <label>Nama Pemegang Ijin</label>
             <div class="input-group">
               <input type="text" name="nama_pemegang_ijin" id="nama_pemegang_ijin" class="form-control" required>
             </div>
-
           </div>
           <div class="form-group">
             <label>Alamat</label>
@@ -43,19 +60,19 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">Tanggal Terbit Ijin</label>
                 <input type="date" name="tanggal_ijin" id="tanggal_ijin" class="form-control datepicker">
               </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">TMT Awal</label>
                 <input type="date" name="jw_disahkan" id="jw_disahkan" class="form-control datepicker">
               </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4">
+            <div class="col-md-4 col-lg-4 col-4 col-xs-4 col-xl-4 col-xxl-4">
               <div class="form-group">
                 <label class="d-block">TMT Akhir</label>
                 <input type="date" name="jw_tenggang" id="jw_tenggang" class="form-control datepicker">
@@ -106,17 +123,24 @@
             <input type="text" name="realisasi" id="realisasi" class="form-control">
           </div>
           <div class="form-group">
-            <label>Korpokla</label>
-            <select class="form-control" name="korpokla" id="korpokla">
-              <option>-PILIH-</option>
+            <label>Korpokla</label><br />
+            <small style="color: red;">Wajib isi</small>
+            <select class="form-control" name="korpokla_by" id="korpokla" required>
+              <option value="">-PILIH-</option>
               <?php foreach ($korpokla as $key => $value) : ?>
-                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+                <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
             <label class="d-block">Keterangan</label>
             <input type="text" name="keterangan" id="keterangan" class="form-control">
+            </a>
+          </div>
+          <div class="form-group">
+            <label class="d-block">Upload KTP</label>
+            <small style="color: red;">Wajib isi</small>
+            <input type="file" class="form-control" id="file_ktp" name="file_ktp" required>
             </a>
           </div>
           <!-- <div class="form-group">
@@ -140,6 +164,7 @@
       e.preventDefault();
       $.ajax({
         type: "post",
+        enctype: 'multipart/form-data',
         url: $(this).attr("action"),
         data: $(this).serialize(),
         dataType: "json",
@@ -156,10 +181,11 @@
           console.log(response);
           // swal("Selamat!", "Data berhasil di simpan!", "success");
           if (response.sukses) {
+            console.log(response)
             iziToast.success({
               title: 'OK',
               position: 'topRight',
-              message: 'Berhasil disimpan',
+              message: response.sukses,
             });
             $('#modaltambah').modal('hide');
             dataperijinan();

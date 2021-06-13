@@ -16,6 +16,13 @@ class Perizinan extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
+			'nomor_romtek'       => [
+				'type'       => 'VARCHAR',
+				'constraint' => '100',
+			],
+			'tanggal_romtek'       => [
+				'type'       => 'DATE',
+			],
 			'nama_pemegang_ijin'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '100',
@@ -72,6 +79,10 @@ class Perizinan extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '50',
 				'null' => 'true',
+			],
+			'file_ktp'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '100',
 			],
 			'user_by'       => [
 				'type'       => 'VARCHAR',

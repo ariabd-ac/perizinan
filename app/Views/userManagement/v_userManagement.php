@@ -56,7 +56,7 @@
                 <td><?= $key + 1 ?></td>
                 <td><?= $value['full_name'] ?></td>
                 <td><?= $value['username'] ?></td>
-                <td><?= $value['korpokla'] ?></td>
+                <td><?= $value['korpokla_name'] ?></td>
                 <td><?= $value['level'] ?></td>
                 <td>
                   <div class="">

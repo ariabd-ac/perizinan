@@ -12,6 +12,7 @@
           <table class="table table-bordered table-md" id="dataperijinan">
             <thead>
               <tr>
+                <th>Nomor Rekomtek/Tanggal</th>
                 <th>Nama Pemegang Ijin</th>
                 <th>Alamat</th>
                 <th>Jenis Tanah</th>
@@ -25,11 +26,13 @@
                 <th>Relasi</th>
                 <th>korpokla</th>
                 <th>Keterangan</th>
+                <th>KTP</th>
 
               </tr>
             </thead>
             <tbody>
               <tr>
+                <td><?= $nomor_rekomtek ?> / <?= $tanggal_rekomtek ?></td>
                 <td><?= $nama_pemegang_ijin ?></td>
                 <td><?= $alamat ?></td>
                 <td><?= $jenis_tanah ?></td>
@@ -43,6 +46,12 @@
                 <td><?= $realisasi ?></td>
                 <td><?= $korpokla_by ?></td>
                 <td><?= $keterangan ?></td>
+                <td>
+                  <img style="
+                    width: 100px;                   
+                    height: 50px;
+                  " src="<?= base_url() . "/uploads/ktp/" . $file_ktp; ?>" alt="ktp">
+                </td>
               </tr>
             </tbody>
           </table>

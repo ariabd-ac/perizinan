@@ -9,8 +9,27 @@
       </div>
       <form action="c_perizinan/updatedata3" method="" class="formperizinan">
         <?= csrf_field() ?>
-        <input type="hidden" name="perijinan_id" id="perijinan_id" class="form-control" value="<?= $perijinan_id ?>" required>
         <div class="modal-body">
+          <input type="hidden" name="perijinan_id" id="perijinan_id" class="form-control" value="<?= $perijinan_id ?>" required>
+          <div class="row">
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Nomor Rekomtek</label>
+                <div class="input-group">
+                  <input type="text" name="nomor_rekomtek" id="nomor_rekomtek" value="<?= $nomor_rekomtek ?>" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-6 col-xs-6 col-xl-6 col-xxl-6">
+              <div class="form-group">
+                <label>Tanggal Rekomtek</label>
+                <div class="input-group">
+                  <input type="date" name="tanggal_rekomtek" id="tanggal_rekomtek" value="<?= $tanggal_rekomtek ?>" class="form-control datepicker">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Nama Pemegang Ijin</label>
             <div class="input-group">
@@ -106,7 +125,11 @@
             <label class="d-block">Realisasi</label>
             <input type="text" name="realisasi" id="realisasi" value="<?= $realisasi ?>" class="form-control">
           </div>
-          <?= $korpokla_by ?>
+          <div class="form-group">
+            <label class="d-block">Korpokla</label>
+            <input type="text" name="korpokla_by" id="korpokla_by" value="<?= $korpokla_by ?>" class="form-control" disabled>
+          </div>
+
           <div class="form-group">
             <label class="d-block">Keterangan</label>
             <input type="text" name="keterangan" id="keterangan" value="<?= $keterangan ?>" class="form-control">
