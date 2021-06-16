@@ -18,6 +18,9 @@ if (session()->get('level') == 'admin') {
   <li class="nav-item dropdown">
     <a href="<?= site_url('user-management') ?>" class="nav-link "><i class="fas fa-th"></i> <span>User Management</span></a>
   </li>
+  <li class="nav-item dropdown">
+    <a href="<?= site_url('perizinan/request') ?>" class="nav-link "><i class="fas fa-th"></i> <span>Req Perijinan</span></a>
+  </li>
 <?php
 }
 ?>

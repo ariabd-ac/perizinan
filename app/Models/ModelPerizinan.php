@@ -26,6 +26,7 @@ class ModelPerizinan extends Model
 			return $this->table('perijinan')
 				->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
 				->where('users.korpokla', $korpokla_id)
+				->where('status', 'approved')
 				->orderBy('perijinan.created_at', 'DESC')
 				->get()
 				->getResultArray();
@@ -33,6 +34,7 @@ class ModelPerizinan extends Model
 			return $this->table('perijinan')
 				->join('rf_korpokla', 'rf_korpokla.korpokla_id=perijinan.korpokla_by', 'LEFT')
 				->where('perijinan_id', $id)
+				->where('status', 'approved')
 				->get()
 				->getRowArray();
 		}
@@ -44,8 +46,26 @@ class ModelPerizinan extends Model
 			->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
 			// ->join('rf_korpokla','korpokla.id=users.korpokla','LEFT')
 			// ->where('users.korpokla',$korpokla_id)
+			->where('status', 'approved')
 			->orderBy('perijinan.created_at', 'DESC')
 			->get()
 			->getResultArray();
+	}
+
+	public function getAllWaiting()
+	{
+		return $this->table('perijinan')
+			->join('users', 'users.user_id=perijinan.user_by', 'LEFT')
+			// ->join('rf_korpokla','korpokla.id=users.korpokla','LEFT')
+			// ->where('users.korpokla',$korpokla_id)
+			->where('status', 'waiting')
+			->orderBy('perijinan.created_at', 'DESC')
+			->get()
+			->getResultArray();
+	}
+
+	public function getForEdit($id)
+	{
+		return $this->find($id);
 	}
 }

@@ -42,6 +42,10 @@ $routes->addRedirect('/', 'home');
 
 
 //perizinan routes
+$routes->get('/perizinan/request', 'C_Request::index');
+$routes->get('/perizinan/approved/(:segment)', 'C_Request::edit/$1');
+
+
 $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->post('/perizinan', 'C_Perizinan::store');
 $routes->get('/perizinan/create', 'C_Perizinan::create');
