@@ -133,12 +133,10 @@
           <div class="form-group">
             <label class="d-block">Keterangan</label>
             <input type="text" name="keterangan" id="keterangan" value="<?= $keterangan ?>" class="form-control">
-            </a>
           </div>
           <div class="form-group">
             <label class="d-block">User by</label>
             <input type="text" name="user_by" id="user_by" class="form-control">
-            </a>
           </div>
         </div>
         <div class="modal-footer">
