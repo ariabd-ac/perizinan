@@ -73,6 +73,9 @@ class C_Perizinan extends BaseController
       $dataKtp = $this->request->getFile('file_ktp');
       $fileName = $dataKtp->getRandomName();
 
+      $flokasi = $this->request->getFile('foto_lokasi');
+      $foto_lokasi = $flokasi->getRandomName();
+
 
       $data = [
         'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
@@ -93,6 +96,7 @@ class C_Perizinan extends BaseController
         'korpokla_by' => $this->request->getPost('korpokla_by'),
         'keterangan' => $this->request->getPost('keterangan'),
         'file_ktp' => $fileName,
+        'foto_lokasi' => $foto_lokasi,
         'user_by' => session()->get('user_id'),
         'created_at' => date("Y-m-d H:i:s"),
       ];
@@ -319,6 +323,8 @@ class C_Perizinan extends BaseController
     $data['korpokla'] = $this->korpoklaModel->getKorpokla();
     return view('perijinan/v_addPerijinan', $data);
   }
+
+
   public function store()
   {
     if (!$this->validate([
@@ -330,14 +336,28 @@ class C_Perizinan extends BaseController
           'max_size' => 'Ukuran File Maksimal 2 MB'
         ]
 
+      ],
+      'foto_lokasi' => [
+        'rules' => 'uploaded[foto_lokasi]|mime_in[foto_lokasi,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto_lokasi,2048]',
+        'errors' => [
+          'uploaded' => 'Harus Ada File yang diupload',
+          'ext_in' => 'File Extention Harus Berupa image/jpg,image/jpeg,image/gif,image/png',
+          'max_size' => 'Ukuran File Maksimal 2 MB'
+        ]
+
       ]
     ])) {
-      session()->setFlashdata('error', $this->validator->listErrors());
-      return redirect()->back()->withInput();
+
+      // session()->setFlashdata('error', $this->validator->listErrors());
+      // return redirect()->back()->withInput();
+      return redirect()->to(site_url('perizinan'))->with('error', 'error');
     }
 
     $dataBerkas = $this->request->getFile('file_ktp');
     $fileName = $dataBerkas->getRandomName();
+
+    $flokasi = $this->request->getFile('foto_lokasi');
+    $foto_lokasi = $flokasi->getRandomName();
 
     $data = [
       'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
@@ -358,6 +378,7 @@ class C_Perizinan extends BaseController
       'korpokla_by' => $this->request->getPost('korpokla_by'),
       'keterangan' => $this->request->getPost('keterangan'),
       'file_ktp' => $fileName,
+      'foto_lokasi' => $foto_lokasi,
       'user_by' => session()->get('user_id'),
       'created_at' => date("Y-m-d H:i:s"),
     ];
@@ -368,6 +389,7 @@ class C_Perizinan extends BaseController
 
     if ($pj) {
       $dataBerkas->move('uploads/ktp/', $fileName);
+      $flokasi->move('uploads/foto_lokasi/', $foto_lokasi);
       return redirect()->to(site_url('perizinan'))->with('success', 'Data tersimpan');
     }
   }
@@ -381,7 +403,7 @@ class C_Perizinan extends BaseController
 
       $pj = new ModelPerizinan();
       $row = $pj->getPerijinan($perijinan_id);
-      
+
       $data = [
         // yang di lempar ke view => field
         'nomor_rekomtek' => $row['nomor_rekomtek'],

@@ -151,13 +151,16 @@
             <div class="form-group">
               <label class="d-block">Keterangan</label>
               <input type="text" name="keterangan" id="keterangan" class="form-control">
-              </a>
             </div>
             <div class="form-group">
               <label class="d-block">Upload KTP</label>
               <small style="color: red;">Wajib isi</small>
               <input type="file" class="form-control" id="file_ktp" name="file_ktp" required>
-              </a>
+            </div>
+            <div class="form-group">
+              <label class="d-block">Foto Lokasi</label>
+              <small style="color: red;">Wajib isi</small>
+              <input type="file" class="form-control" id="foto_lokasi" name="foto_lokasi" required>
             </div>
             <!-- <div class="form-group">
             <label class="d-block">User by</label>

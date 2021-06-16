@@ -84,6 +84,10 @@ class Perizinan extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
+			'foto_lokasi'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '100',
+			],
 			'user_by'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '50',

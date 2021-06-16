@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-4">
-    
+
   </div>
   <div class="col-md-4"></div>
   <div class="col-md-4"></div>
@@ -33,9 +33,11 @@
         <td><?= $value['jw_disahkan'] ?> s/d <?= $value['jw_tenggang'] ?></td>
         <td><?= $value['username'] ?></td>
         <td>
-          <button type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
-          <button type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
-          <button type="button" class="btn btn-sm btn-success" title="edit" data-original-title="edit" onclick="edit('<?= $value['perijinan_id'] ?>')"><i class="far fa-edit"></i></button>
+          <div class="action" style="display:flex;">
+            <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
+            <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
+            <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-success" title="edit" data-original-title="edit" onclick="edit('<?= $value['perijinan_id'] ?>')"><i class="far fa-edit"></i></button>
+          </div>
         </td>
       </tr>
     <?php endforeach; ?>
