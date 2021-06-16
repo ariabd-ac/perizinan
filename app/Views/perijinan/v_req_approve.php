@@ -10,7 +10,7 @@
 
 <section class="section">
   <div class="section-header">
-    <h1>Perizinan <?= $perijinan['perijinan_id'] ?></h1>
+    <h1>Perizinan</h1>
   </div>
 
   <?php if (session()->getFlashdata('success')) : ?>
@@ -44,7 +44,9 @@
       </div>
       <div class="card-body">
         <div class="row">
-
+          <p>
+            <?= $value['status'] ?>
+          </p>
         </div>
       </div>
     </div>

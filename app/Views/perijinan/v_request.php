@@ -104,7 +104,7 @@
                   <td>
                     <div class="action" style="display:flex;">
                       <!-- <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button> -->
-                      <a href="<?= site_url('perizinan/approved/' . $value['user_id']) ?>" class="btn btn-sm btn-dange"><i class="fa fa-edit"></i></a>
+                      <a href="<?= site_url('perizinan/approved/' . $value['perijinan_id']) ?>" class="btn btn-sm btn-dange"><i class="fa fa-edit"></i></a>
 
                     </div>
                   </td>
