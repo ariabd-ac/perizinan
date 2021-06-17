@@ -43,6 +43,7 @@ $routes->addRedirect('/', 'home');
 
 //perizinan routes
 $routes->get('/perizinan/request', 'C_Request::index');
+$routes->get('/perizinan/(:segment)', 'C_Request::update/$1');
 $routes->get('/perizinan/approved/(:segment)', 'C_Request::edit/$1');
 
 

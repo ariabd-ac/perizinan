@@ -38,9 +38,10 @@ class C_Request extends BaseController
       // print_r($query);
       // die;
       if ($query->resultID->num_rows > 0) {
-        $data = [
-          'value' => $this->perijinanModel->getAllWaiting($id)
-        ];
+        $data['value'] = $query->getRow();
+        // $data = [
+        //   'value' => $this->perijinanModel->getAllWaiting($id)
+        // ];
         // print_r($data);
         // var_dump($data);
         // die;
@@ -54,10 +55,16 @@ class C_Request extends BaseController
 
     $data['data'] = $this->perijinanModel->getAllWaiting($id);
     return view('perijinan/v_req_approve', $data);
+  }
 
-    //model initialize
-
-
-
+  public function update($id)
+  {
+    // dd($this->request->getVar());
+    $data = $this->request->getPost();
+    // var_dump($data);
+    // die;
+    unset($data['_method']);
+    $this->db->table('perijinan')->where(['perijinan_id' => $id])->update($data);
+    return redirect()->to(site_url('/perizinan'))->with('success', 'Data terupdate');
   }
 }
