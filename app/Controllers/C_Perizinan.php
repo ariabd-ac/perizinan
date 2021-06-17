@@ -322,11 +322,13 @@ class C_Perizinan extends BaseController
   {
     $data['korpokla'] = $this->korpoklaModel->getKorpokla();
     return view('perijinan/v_addPerijinan', $data);
+    // return view('perijinan/v_addPerijinan');
   }
 
 
   public function store()
   {
+
     if (!$this->validate([
       'file_ktp' => [
         'rules' => 'uploaded[file_ktp]|mime_in[file_ktp,image/jpg,image/jpeg,image/gif,image/png]|max_size[file_ktp,2048]',
@@ -359,6 +361,12 @@ class C_Perizinan extends BaseController
     $flokasi = $this->request->getFile('foto_lokasi');
     $foto_lokasi = $flokasi->getRandomName();
 
+    if (session()->get('level') == 'admin') {
+      $status = 'approved';
+    } else {
+      $status = 'waiting';
+    }
+
     $data = [
       'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
       'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
@@ -379,6 +387,7 @@ class C_Perizinan extends BaseController
       'keterangan' => $this->request->getPost('keterangan'),
       'file_ktp' => $fileName,
       'foto_lokasi' => $foto_lokasi,
+      'status' => $status,
       'user_by' => session()->get('user_id'),
       'created_at' => date("Y-m-d H:i:s"),
     ];

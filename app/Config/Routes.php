@@ -49,7 +49,9 @@ $routes->get('/perizinan/approved/(:segment)', 'C_Request::edit/$1');
 
 $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->post('/perizinan', 'C_Perizinan::store');
-$routes->get('/perizinan/create', 'C_Perizinan::create');
+$routes->get('/p/create', 'C_Perizinan::create');
+
+
 $routes->get('/c_perizinan/ambildata', 'C_Perizinan::ambildata');
 $routes->get('c_perizinan/formtambah', 'C_Perizinan::formtambah');
 $routes->post('c_perizinan/simpandata', 'C_Perizinan::simpandata');

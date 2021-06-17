@@ -15,7 +15,7 @@ class ModelPerizinan extends Model
 	// protected $allowedFields     = [
 	// 	'perijinan_id', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'keterangan', 'created_at'
 	// ];
-	protected $allowedFields = ['perijinan_id', 'nomor_rekomtek', 'tanggal_rekomtek', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'korpokla_by', 'keterangan', 'file_ktp', 'foto_lokasi', 'created_at', 'user_by'];
+	protected $allowedFields = ['perijinan_id', 'nomor_rekomtek', 'tanggal_rekomtek', 'nama_pemegang_ijin', 'alamat', 'jenis_tanah', 'lokasi_tanah', 'nomor_ijin', 'tanggal_ijin', 'jw_disahkan', 'jw_tenggang', 'peruntukan', 'luas', 'nilai_tarip', 'nilai_retribusi', 'realisasi', 'korpokla_by', 'keterangan', 'file_ktp', 'foto_lokasi', 'status', 'created_at', 'user_by'];
 
 
 
