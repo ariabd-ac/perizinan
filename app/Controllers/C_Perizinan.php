@@ -295,6 +295,52 @@ class C_Perizinan extends BaseController
     }
   }
 
+  // controller show photo lapangan
+  public function showPhoto()
+  {
+    if ($this->request->isAJAX()) {
+      $perijinan_id = $this->request->getVar('perijinan_id');
+
+      $pj = new ModelPerizinan();
+      // $row = $pj->find($perijinan_id);
+      $row = $pj->getPerijinan($perijinan_id);
+
+
+      $data = [
+        // yang di lempar ke view => field
+        'nomor_rekomtek' => $row['nomor_rekomtek'],
+        'tanggal_rekomtek' => $row['tanggal_rekomtek'],
+        'perijinan_id' => $row['perijinan_id'],
+        'nama_pemegang_ijin' => $row['nama_pemegang_ijin'],
+        'alamat' => $row['alamat'],
+        'jenis_tanah' => $row['jenis_tanah'],
+        'lokasi_tanah' => $row['lokasi_tanah'],
+        'nomor_ijin' => $row['nomor_ijin'],
+        'tanggal_ijin' => $row['tanggal_ijin'],
+        'jw_disahkan' => $row['jw_disahkan'],
+        'jw_tenggang' => $row['jw_tenggang'],
+        'peruntukan' => $row['peruntukan'],
+        'luas' => $row['luas'],
+        'nilai_tarip' => $row['nilai_tarip'],
+        'nilai_retribusi' => $row['nilai_retribusi'],
+        'realisasi' => $row['realisasi'],
+        'korpokla_by' => $row['korpokla_name'],
+        'keterangan' => $row['keterangan'],
+        'file_ktp' => $row['file_ktp'],
+        'foto_lokasi' => $row['foto_lokasi'],
+      ];
+
+
+      $msg = [
+        'sukses' => view('perijinan/modalShowPhoto', $data)
+      ];
+
+      echo json_encode($msg);
+    } else {
+      echo 'gabisa';
+    }
+  }
+
 
 
   public function hapus()
@@ -340,7 +386,7 @@ class C_Perizinan extends BaseController
 
       ],
       'foto_lokasi' => [
-        'rules' => 'uploaded[foto_lokasi]|mime_in[foto_lokasi,image/jpg,image/jpeg,image/gif,image/png]|max_size[foto_lokasi,2048]',
+        'rules' => 'uploaded[foto_lokasi]|mime_in[foto_lokasi,image/jpg,image/jpeg,image/gif,image/png]',
         'errors' => [
           'uploaded' => 'Harus Ada File yang diupload',
           'ext_in' => 'File Extention Harus Berupa image/jpg,image/jpeg,image/gif,image/png',
