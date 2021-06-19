@@ -14,8 +14,9 @@
     <h3 style="display:flex;justify-content: center;">Selamat Datang!</h3>
     <?php foreach ($berkas as $key => $row) : ?>
       <div style="display:flex;margin-top:20px;justify-content: center;">
-        <iframe src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" style="border:none;height:100vh;width:100%;" frameborder="0"></iframe>
+        <!-- <iframe src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" style="border:none;height:100vh;width:100%;" frameborder="0"></iframe> -->
         <!-- <embed src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" height="1000" width="1000"> -->
+        <embed src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" type="application/pdf" height="1000" width="1000">
       </div>
     <?php endforeach; ?>
   </div>

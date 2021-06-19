@@ -27,6 +27,8 @@
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+
+
 </head>
 
 <body>
@@ -87,31 +89,31 @@
   <script src="<?= base_url() ?>/template/assets/js/page/modules-sweetalert.js"></script>
   <script src="<?= base_url() ?>/template/assets/js/page/modules-toastr.js"></script>
   <script>
-    function detailMessage(perijinan_id,notifId){
+    function detailMessage(perijinan_id, notifId) {
       $.ajax({
-      type: "get",
-      url: "<?= site_url('c_messages/detail') ?>",
-      data: {
-        perijinan_id: perijinan_id,
-        notif_id:notifId
-      },
-      dataType: "json",
-      success: function(response) {
-        console.log(response)
-        if (response.sukses) {
-          getMessages()
-          $('.viewmodal').html(response.sukses).show();
-          $('#modaldetail').modal('show');
+        type: "get",
+        url: "<?= site_url('c_messages/detail') ?>",
+        data: {
+          perijinan_id: perijinan_id,
+          notif_id: notifId
+        },
+        dataType: "json",
+        success: function(response) {
+          console.log(response)
+          if (response.sukses) {
+            getMessages()
+            $('.viewmodal').html(response.sukses).show();
+            $('#modaldetail').modal('show');
+          }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
         }
-      },
-      error: function(xhr, ajaxOptions, thrownError) {
-        console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError)
-      }
-    });
+      });
     }
 
     function pindah(perijinan_id) {
-     
+
       $.ajax({
         type: "get",
         url: "<?= site_url('c_perizinan/formpindah') ?>",
@@ -133,7 +135,7 @@
     }
 
     function perpanjang(perijinan_id) {
-     
+
       $.ajax({
         type: "get",
         url: "<?= site_url('c_perizinan/formperpanjang') ?>",
@@ -142,7 +144,7 @@
         },
         dataType: "json",
         success: function(response) {
-         
+
           if (response.sukses) {
             $('.viewmodal').html(response.sukses).show();
             $('#modalperpanjang').modal('show');
@@ -157,14 +159,14 @@
     function cekMasaTenggang(data) {
       let listMasaTenggang = []; //tampungan list masa tenggang
       let today = new Date() // 
-      
+
       for (let index = 0; index < data.length; index++) {
         const dt = data[index];
         let cek = Math.floor((new Date(dt.jw_tenggang) - today) / (24 * 60 * 60 * 1000))
-      
+
         // console.log(today-5,'today')  
         if (cek <= 12) { //if massa tenggang -today <=12 hari
-          dt.tenggang_hari=cek
+          dt.tenggang_hari = cek
           listMasaTenggang.push(dt) // push to array listMasaTenggang
         }
       }
@@ -176,7 +178,7 @@
     }
 
     function insertOrUpdateTable(listMasaTenggang) {
-      
+
       // ajax hit controller
 
       // controller will be included :
@@ -259,7 +261,7 @@
     }
 
     function hapusMsg(perijinan_id) {
-    
+
       swal({
         title: `Yakin ingin menghapus?`,
         buttons: {
@@ -297,9 +299,9 @@
 
     function generateNotification(dt) {
       $('#notif').html(dt.view)
-      const dataMessage=document.getElementById('datamessage');
-      if(dataMessage){
-        dataMessage.innerHTML=dt.viewMessage
+      const dataMessage = document.getElementById('datamessage');
+      if (dataMessage) {
+        dataMessage.innerHTML = dt.viewMessage
       }
     }
 
