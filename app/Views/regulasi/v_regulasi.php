@@ -65,7 +65,7 @@
                 <td><?= $row['keterangan'] ?></td>
                 <td>
                   <div class="">
-                    <a class="btn btn-info" href="<?= base_url('regulasi'); ?>/c_regulasi/download/<?= $row['id_regulasi']; ?>">Download</a>
+                    <a class="btn btn-info" href="/c_regulasi/download/<?= $row['id_regulasi']; ?>">Download</a>
                     <form action="<?= site_url('regulasi/' . $row['id_regulasi']) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <input type="hidden" name="_method" value="DELETE">

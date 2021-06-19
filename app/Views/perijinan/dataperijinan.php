@@ -37,7 +37,7 @@
             <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-danger" title="lihat detail" data-original-title="Lihat detail" onclick="detail('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
             <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-warning" title="hapus" data-original-title="hapus" onclick="hapus('<?= $value['perijinan_id'] ?>')"><i class="fa fa-trash"></i></button>
             <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-success" title="edit" data-original-title="edit" onclick="edit('<?= $value['perijinan_id'] ?>')"><i class="far fa-edit"></i></button>
-            <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-info" title="edit" data-original-title="showPhoto" onclick="showPhoto('<?= $value['perijinan_id'] ?>')"><i class="fa fa-search-plus"></i></button>
+            <button style="margin-right: 5px;" type="button" class="btn btn-sm btn-info" title="edit" data-original-title="showPhoto" onclick="showPhoto('<?= $value['perijinan_id'] ?>')"><i class="fa fa-images"></i></button>
           </div>
         </td>
       </tr>

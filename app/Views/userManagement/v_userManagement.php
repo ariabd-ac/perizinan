@@ -60,11 +60,11 @@
                 <td><?= $value['level'] ?></td>
                 <td>
                   <div class="">
-                    <a href="<?= site_url('user-management/edit/' . $value['user_id']) ?>" class="btn-sm btn-secondary"><i class="fa fa-edit"></i></a>
+                    <a href="<?= site_url('user-management/edit/' . $value['user_id']) ?>" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i></a>
                     <form action="<?= site_url('user-management/' . $value['user_id']) ?>" method="post" class="d-inline">
                       <?= csrf_field() ?>
                       <input type="hidden" name="_method" value="DELETE">
-                      <button class="btn-sm btn-danger">
+                      <button class="btn btn-sm btn-danger">
                         <i class="fa fa-trash"></i>
                       </button>
                     </form>
