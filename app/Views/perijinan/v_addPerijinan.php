@@ -10,7 +10,7 @@
     <div class="section-header-back">
       <a href="<?= site_url('perizinan') ?>" class="btn btn-primary"><i class="fas fa-arrow-left"></i></a>
     </div>
-    <h1>Tambah Data User</h1>
+    <h1>Tambah Data Perizinan</h1>
   </div>
 
 

@@ -43,26 +43,38 @@
         <!-- <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button> -->
       </div>
 
-      <div class="card-body">
+      <div class="card-body filter-container">
         <div class="row">
           <div class="col-md-4">
             <div class="row">
               <div class="col-md-6">
+              <div class="form-group">
                 <label for="by_korpokla">Korpokla</label>
-                <select name="" id="by_korpokla">
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
+                <select class='form-control' name="" id="byKorpokla">
+                  <option value="">-PILIH-</option>
+                  <?php foreach ($korpokla as $key => $value) : ?>
+                    <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+                  <?php endforeach; ?>
                 </select>
+              </div>
               </div>
               <div class="col-md-6">
-                <label for="by_korpokla">Masa Tenggang</label>
-                <select name="" id="by_korpokla">
-                  <option value="">1 Tahun</option>
-                  <option value="">2 Tahun</option>
-                  <option value="">3 Tahun</option>
-                </select>
+                <div class="form-group">
+                  <label for="by_korpokla">Masa Tenggang</label>
+                  <select name="" id="byDueDate" class='form-control'>
+                    <option value="">-PILIH-</option>
+                    <option value="1">1 Tahun</option>
+                    <option value="2">2 Tahun</option>
+                    <option value="3">3 Tahun</option>
+                  </select>
+                </div>
               </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <input type="hidden" class='form-control' name="">
+              <button class='btn btn-primary filter-button form-control'>Submit</button>
             </div>
           </div>
         </div>
@@ -74,16 +86,34 @@
     </div>
   </div>
 </section>
-<div class="viewmodal" style="display: none;"></div>
+<div class="viewmodal" style="display: none;">
+</div>
 
 <script>
+  let listPerizinan=[]
+  const filterContainer=document.getElementsByClassName('filter-container')
+  const inputByDueDateComp=document.getElementById('byDueDate')
+  const inputByKorpoklaComp=document.getElementById('byKorpokla')
+  
+  filterContainer[0].addEventListener('click',(e)=>{
+    const targetByClass=e.target.classList
+
+    if(targetByClass.contains('filter-button')){
+      filterData()
+    }
+  });
+
+
   function dataperijinan() {
     $.ajax({
       url: "<?= site_url('c_perizinan/ambildata') ?>",
       dataType: "json",
       success: function(response) {
         cekMasaTenggang(response.list_perijinan)
+        // add to list perizinan
+        listPerizinan=response.list_perijinan
         $('.viewdata').html(response.data);
+
         $('.modal-backdrop').remove();
       },
       error: function(xhr, ajaxOptions, thrownError) {
@@ -92,6 +122,37 @@
         swal(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
       }
     });
+  }
+
+  function filterData(){
+    let dueDate=inputByDueDateComp.value 
+    let korpoklaId=inputByKorpoklaComp.value 
+  
+    let dataToPost={
+      dueDate,
+      korpoklaId
+    }
+    console.log(korpoklaId)
+    console.log(dataToPost)
+      $.ajax({
+        url: "<?= site_url('c_perizinan/filter') ?>",
+        type:"POST",
+        dataType: "json",
+        data: dataToPost,
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', "<?= csrf_hash() ?>");
+        },
+        complete: function() {
+          
+        },
+        success: function(response) {
+          console.log(response); 
+          $('.viewdata').html(response.data);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          console.log(xhr.status + '\n' + xhr.responseText + '\n' + thrownError);
+        }
+      });
   }
 
   $(document).ready(function() {
