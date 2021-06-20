@@ -49,6 +49,7 @@
           </div>
           <div class=" form-group">
             <label>Password Strength</label>
+            <h6 style="color: red;">Password disi, jika ingin mengubah</h6>
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text">
@@ -64,10 +65,11 @@
           </div>
           <div class="form-group">
             <label>Korpokla</label>
-            <select class="form-control" name="korpokla" value="<?= $users['korpokla'] ?>" id="korpokla">
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
+            <select class="form-control" name="korpokla" id="korpokla">
+              <option>-PILIH-</option>
+              <?php foreach ($korpokla as $key => $value) : ?>
+                <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+              <?php endforeach; ?>
             </select>
           </div>
           <div class="form-group">
@@ -75,7 +77,6 @@
             <select class="form-control" name="level" value="<?= $users['level'] ?>" id="level">
               <option>Admin</option>
               <option>Korpokla</option>
-              <option>Pejabad</option>
             </select>
           </div>
           <div class="row">

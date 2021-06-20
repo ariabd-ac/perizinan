@@ -66,7 +66,7 @@
             <select class="form-control" name="korpokla" id="korpokla">
               <option>-PILIH-</option>
               <?php foreach ($korpokla as $key => $value) : ?>
-                <option value="<?php $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+                <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -75,7 +75,6 @@
             <select class="form-control" name="level" id="level">
               <option value="admin">Admin</option>
               <option value="korpokla">Korpokla</option>
-              <option value="user">ORANG LEMAH</option>
             </select>
           </div>
           <div class="row">

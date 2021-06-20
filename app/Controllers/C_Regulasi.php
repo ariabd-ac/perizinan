@@ -69,7 +69,8 @@ class C_Regulasi extends BaseController
 		// $berkas = new ModelRegulasi();
 		$data = $this->regulasiModel->find($id);
 		// dd($data);
-		return $this->response->download('uploads/berkas/' . $data->berkas, null);
+		// die;
+		return $this->response->download('uploads/berkas/' . $data['file_berkas'], null);
 	}
 
 	public function destroy($id)

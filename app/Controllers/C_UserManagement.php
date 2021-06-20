@@ -54,7 +54,14 @@ class C_UserManagement extends BaseController
       $query = $this->db->table('users')->getWhere(['user_id' => $id]);
       // print_r($query);
       if ($query->resultID->num_rows > 0) {
-        $data['users'] = $this->userModel->getUser($id);
+        $data = [
+          // $users['users'] = $this->userModel->getUser($id),
+          // $korpokla['korpokla'] = $this->korpoklaModel->getKorpokla()
+          'users' => $this->userModel->getUser($id),
+          'korpokla' =>  $this->korpoklaModel->getKorpokla()
+        ];
+        // var_dump($data);
+        // die;
         return view('userManagement/v_edit', $data);
       } else {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
