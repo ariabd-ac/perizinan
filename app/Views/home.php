@@ -7,7 +7,7 @@
 <?= $this->section('content') ?>
 <section class="section">
   <div class="section-header">
-    <h1>Blank Page</h1>
+    <h1>SIPeri</h1>
   </div>
 
   <div class="section-body">
@@ -18,8 +18,8 @@
         <!-- <embed src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" height="1000" width="1000"> -->
         <!-- <embed src="<?= base_url() . "/uploads/berkas/" . $row['file_berkas']; ?>" type="application/pdf" height="1000" width="1000"> -->
       </div>
-    <?php endforeach; ?>
-  </div>
+      <?php endforeach; ?>
+    </div>
 </section>
 
 <?= $this->endSection() ?>

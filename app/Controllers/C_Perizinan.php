@@ -19,7 +19,27 @@ class C_Perizinan extends BaseController
 
   public function index()
   {
-    return view('perijinan/v_perizinan');
+    $data['korpokla'] = $this->korpoklaModel->getKorpokla();
+    return view('perijinan/v_perizinan',$data);
+  }
+
+  public function filter(){
+    if ($this->request->isAJAX()) {
+      $data=array(
+        "dueDate"=>$this->request->getPost('dueDate'),
+        "korpoklaId"=>$this->request->getPost('korpoklaId')
+      );
+
+      $result['perijinan']=$this->perijinanModel->filterData($data);
+
+      $msg = [
+        'data' => view('perijinan/dataperijinan', $result),
+      ];
+
+      // dd($msg);
+
+      echo json_encode($msg);
+    }
   }
 
   public function ambildata()
@@ -35,6 +55,7 @@ class C_Perizinan extends BaseController
         $perijinan = $this->perijinanModel->getPerijinan(false, $id_korpokla);
       }
       $data['perijinan'] = $perijinan;
+      
 
       $msg = [
         'data' => view('perijinan/dataperijinan', $data),

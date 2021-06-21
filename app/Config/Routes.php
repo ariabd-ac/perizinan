@@ -49,6 +49,7 @@ $routes->get('/perizinan/approved/(:segment)', 'C_Request::edit/$1');
 
 $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->post('/perizinan', 'C_Perizinan::store');
+$routes->post('/perizinan/filter', 'C_Perizinan::filter');
 $routes->get('/p/create', 'C_Perizinan::create');
 
 
@@ -93,6 +94,8 @@ $routes->get('/regulasi/download/(:segment)', 'C_Regulasi::download/$1');
 $routes->delete('/regulasi/(:segment)', 'C_Regulasi::destroy/$1');
 
 
+// 
+$routes->get('/informasi', 'C_Informasi::index');
 
 /*
  * --------------------------------------------------------------------
