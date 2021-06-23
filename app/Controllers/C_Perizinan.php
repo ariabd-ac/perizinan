@@ -6,6 +6,8 @@ use App\Models\ModelPerizinan;
 use App\Models\ModelUsers;
 use App\Models\ModelKorpokla;
 
+use TCPDF;
+
 
 
 class C_Perizinan extends BaseController
@@ -667,5 +669,29 @@ class C_Perizinan extends BaseController
     } else {
       throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
+  }
+
+  public function exportPdf()
+  {
+    $data = [
+      'perijinan' => $this->perijinanModel->getAll(),
+      'korpokla' =>  $this->korpoklaModel->getKorpokla()
+    ];
+
+    $html = view('perijinan/v_perijinanPdf', $data);
+    // return view('perijinan/v_perijinanPdf', $data);
+
+    $pdf = new TCPDF('L', PDF_UNIT, 'A5', true, 'UTF-8', false);
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Pemali Comal');
+    $pdf->SetTitle('Data Perizinan');
+    $pdf->SetSubject('Data Perizinan');
+    $pdf->setPrintHeader(false);
+    $pdf->setPrintFooter(false);
+
+    $pdf->addPage();
+    $pdf->writeHTML($html, true, false, true, false, '');
+    $this->response->setContentType('application/pdf');
+    $pdf->Output('dataperizinan.pdf', 'I');
   }
 }

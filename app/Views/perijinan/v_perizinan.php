@@ -39,7 +39,8 @@
     <hr />
     <div class="card">
       <div class="card-header">
-        <a href="<?= site_url('/p/create') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+        <a style="margin-right: 10px;" href="<?= site_url('/p/create') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+        <a style="margin-right: 10px;" href="<?= base_url('/c_perizinan/exportPdf') ?>" target="_blank" class="btn btn-info"><i class="fas fa-print"></i> Export PDF</a>
         <!-- <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button> -->
       </div>
 
