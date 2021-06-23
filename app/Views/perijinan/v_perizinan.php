@@ -46,8 +46,13 @@
       <div class="card-body filter-container">
 
         <div class="row">
-          <?php
+          <div class="col-md-12 col-lg-12 col-12 col-sm-12 col-xs-12 col-xl-12">
+            <h6 style="color: #e8632a;">Noteed : Jika sudah memilih filter, dan ingin memilih filter lagi harap refresh terlebih dahulu</h6>
+          </div>
+        </div>
 
+        <div class="row">
+          <?php
           if (session()->get('level') == 'admin') { ?>
             <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
               <div class="form-group">

@@ -49,8 +49,10 @@ $routes->get('/perizinan/approved/(:segment)', 'C_Request::edit/$1');
 
 $routes->get('/perizinan', 'C_Perizinan::index');
 $routes->post('/perizinan', 'C_Perizinan::store');
-$routes->post('/perizinan/filter', 'C_Perizinan::filter');
 $routes->get('/p/create', 'C_Perizinan::create');
+$routes->get('/p/edit/(:segment)', 'C_Perizinan::editForm/$1');
+$routes->put('/p/(:segment)', 'C_Perizinan::updateToForm/$1');
+$routes->post('/perizinan/filter', 'C_Perizinan::filter');
 
 
 $routes->get('/c_perizinan/ambildata', 'C_Perizinan::ambildata');

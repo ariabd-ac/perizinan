@@ -20,17 +20,18 @@ class C_Perizinan extends BaseController
   public function index()
   {
     $data['korpokla'] = $this->korpoklaModel->getKorpokla();
-    return view('perijinan/v_perizinan',$data);
+    return view('perijinan/v_perizinan', $data);
   }
 
-  public function filter(){
+  public function filter()
+  {
     if ($this->request->isAJAX()) {
-      $data=array(
-        "dueDate"=>$this->request->getPost('dueDate'),
-        "korpoklaId"=>$this->request->getPost('korpoklaId')
+      $data = array(
+        "dueDate" => $this->request->getPost('dueDate'),
+        "korpoklaId" => $this->request->getPost('korpoklaId')
       );
 
-      $result['perijinan']=$this->perijinanModel->filterData($data);
+      $result['perijinan'] = $this->perijinanModel->filterData($data);
 
       $msg = [
         'data' => view('perijinan/dataperijinan', $result),
@@ -55,7 +56,7 @@ class C_Perizinan extends BaseController
         $perijinan = $this->perijinanModel->getPerijinan(false, $id_korpokla);
       }
       $data['perijinan'] = $perijinan;
-      
+
 
       $msg = [
         'data' => view('perijinan/dataperijinan', $data),
@@ -391,6 +392,117 @@ class C_Perizinan extends BaseController
     return view('perijinan/v_addPerijinan', $data);
     // return view('perijinan/v_addPerijinan');
   }
+
+  public function editForm($id = null)
+  {
+    // $data['korpokla'] = $this->korpoklaModel->getKorpokla();
+    // return view('perijinan/v_editPerijinan', $data);
+    // return view('perijinan/v_addPerijinan');
+
+    if ($id != null) {
+      $query = $this->db->table('perijinan')->getWhere(['perijinan_id' => $id]);
+      // $query = $this->perijinanModel->getForEdit($id);
+      // print_r($query);
+      // die;
+      if ($query->resultID->num_rows > 0) {
+        $data = [
+          'perijinan' => $query->getRow(),
+          'korpokla' =>  $this->korpoklaModel->getKorpokla()
+        ];
+        // print_r($data);
+        // var_dump($data);
+        // die;
+        return view('perijinan/v_editPerijinan', $data);
+      } else {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+      }
+    } else {
+      throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+
+    $data['data'] = $this->perijinanModel->getAllWaiting($id);
+    return view('perijinan/v_editPerijinan', $data);
+  }
+
+  public function updateToForm($id)
+  {
+    // dd($this->request->getVar());
+
+    // $foto_lokasi = $this->request->getPost('foto_lokasi_lama');
+    // var_dump($foto_lokasi);
+    // die;
+
+    if ($this->request->getFile('file_ktp') != "") {
+      $dataBerkas = $this->request->getFile('file_ktp');
+      $fileName = $dataBerkas->getRandomName();
+      $dataBerkas->move('uploads/ktp/', $fileName);
+    } else {
+      $fileName = $this->request->getPost('file_ktp_lama');
+    }
+
+
+    if ($this->request->getFile('foto_lokasi') != "") {
+      $flokasi = $this->request->getFile('foto_lokasi');
+      $foto_lokasi = $flokasi->getRandomName();
+      $flokasi->move('uploads/foto_lokasi/', $foto_lokasi);
+    } else {
+      $foto_lokasi = $this->request->getPost('foto_lokasi_lama');
+    }
+
+
+    if (session()->get('level') == 'admin') {
+      $status = 'approved';
+    } else {
+      $status = 'waiting';
+    }
+
+
+    $data = [
+      'nomor_rekomtek'  => $this->request->getPost('nomor_rekomtek'),
+      'tanggal_rekomtek'  => $this->request->getPost('tanggal_rekomtek'),
+      'nama_pemegang_ijin'  => $this->request->getPost('nama_pemegang_ijin'),
+      'alamat'  => $this->request->getPost('alamat'),
+      'jenis_tanah'  => $this->request->getPost('jenis_tanah'),
+      'lokasi_tanah' => $this->request->getPost('lokasi_tanah'),
+      'nomor_ijin' => $this->request->getPost('nomor_ijin'),
+      'tanggal_ijin' => $this->request->getPost('tanggal_ijin'),
+      'jw_disahkan' => $this->request->getPost('jw_disahkan'),
+      'jw_tenggang' => $this->request->getPost('jw_tenggang'),
+      'peruntukan' => $this->request->getPost('peruntukan'),
+      'luas' => $this->request->getPost('luas'),
+      'nilai_tarip' => $this->request->getPost('nilai_tarip'),
+      'nilai_retribusi' => $this->request->getPost('nilai_retribusi'),
+      'realisasi' => $this->request->getPost('realisasi'),
+      'korpokla_by' => $this->request->getPost('korpokla_by'),
+      'keterangan' => $this->request->getPost('keterangan'),
+      'file_ktp' => $fileName,
+      'foto_lokasi' => $foto_lokasi,
+      'status' => $status,
+      'created_at' => date("Y-m-d H:i:s"),
+    ];
+
+
+    // var_dump($data);
+    // die;
+
+
+
+
+    unset($data['_method']);
+    // $ubah = $this->perijinanModel->update_users($data, $id);
+    $ubah = new ModelPerizinan();
+    $id = $this->request->getPost('perijinan_id');
+    $ubah->update($id, $data);
+    if ($ubah) {
+      // $dataBerkas->move('uploads/ktp/', $fileName);
+      // $flokasi->move('uploads/foto_lokasi/', $foto_lokasi);
+      return redirect()->to(site_url('perizinan'))->with('success', 'Data terupdate');
+    }
+
+    // $this->db->table('users')->where(['user_id' => $id])->update($data);
+    // return redirect()->to(site_url('user-management'))->with('success', 'Data terupdate');
+  }
+
 
 
   public function store()
