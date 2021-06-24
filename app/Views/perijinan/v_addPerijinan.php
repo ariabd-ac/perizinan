@@ -136,7 +136,14 @@
             </div>
             <div class="form-group">
               <label class="d-block">Realisasi</label>
-              <input type="text" name="realisasi" id="realisasi" class="form-control">
+              <!-- <input type="text" name="realisasi" id="realisasi" class="form-control"> -->
+              <select class="form-control" name="korpokla_by" id="korpokla" required>
+                <option value="">-PILIH-</option>
+                <option value="belum_lunas">Belum Lunas</option>
+                <option value="lunas_1thn">Lunas 1 Tahun</option>
+                <option value="lunas_2thn">Lunas 2 Tahun</option>
+                <option value="lunas_3thn">Lunas 3 Tahun</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Korpokla</label><br />
