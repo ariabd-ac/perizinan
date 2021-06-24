@@ -40,7 +40,12 @@
     <div class="card">
       <div class="card-header">
         <a style="margin-right: 10px;" href="<?= site_url('/p/create') ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-        <a style="margin-right: 10px;" href="<?= base_url('/c_perizinan/exportPdf') ?>" target="_blank" class="btn btn-info"><i class="fas fa-print"></i> Export PDF</a>
+        <?php
+        if (session()->get('level') == 'admin') { ?>
+          <a style="margin-right: 10px;" href="<?= base_url('/c_perizinan/exportPdf') ?>" target="_blank" class="btn btn-info"><i class="fas fa-print"></i> Export PDF</a>
+        <?php  }
+        ?>
+
         <!-- <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button> -->
       </div>
 

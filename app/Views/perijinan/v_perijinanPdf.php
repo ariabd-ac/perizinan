@@ -36,7 +36,7 @@
       <tr>
         <th width="2%">#</th>
         <th width="15%">Nomor Rekomtek/Tanggal</th>
-        <th width="10%">Nama Pemegang Ijin</th>
+        <th width="9%">Nama Pemegang Ijin</th>
         <th>Alamat</th>
         <th width="9%">Jenis Tanah</th>
         <th>Lokasi Tanah</th>
@@ -46,7 +46,7 @@
         <th>Luas M2</th>
         <th>Nilai Tarif M2 (Rp)</th>
         <th>Nilai Retribusi M2 (Rp)</th>
-        <th>Realisasi</th>
+        <th width="5%">Realisasi</th>
         <th>Keterangan</th>
       </tr>
     </thead>
@@ -55,7 +55,7 @@
         <tr>
           <td width="2%"><?= $key + 1 ?></td>
           <td width="15%"><?= $value['nomor_rekomtek'] ?> / <?= $value['tanggal_rekomtek'] ?></td>
-          <td width="10%"><?= $value['nama_pemegang_ijin'] ?></td>
+          <td width="9%"><?= $value['nama_pemegang_ijin'] ?></td>
           <td><?= $value['alamat'] ?></td>
           <td width="9%"><?= $value['jenis_tanah'] ?></td>
           <td><?= $value['lokasi_tanah'] ?></td>
@@ -65,7 +65,7 @@
           <td><?= $value['luas'] ?></td>
           <td><?= $value['nilai_tarip'] ?></td>
           <td><?= $value['nilai_retribusi'] ?></td>
-          <td><?= $value['realisasi'] ?></td>
+          <td width="5%"><?= $value['realisasi'] ?></td>
           <td><?= $value['keterangan'] ?></td>
         </tr>
       <?php endforeach; ?>

@@ -686,8 +686,16 @@ class C_Perizinan extends BaseController
     $pdf->SetAuthor('Pemali Comal');
     $pdf->SetTitle('Data Perizinan');
     $pdf->SetSubject('Data Perizinan');
-    $pdf->setPrintHeader(false);
-    $pdf->setPrintFooter(false);
+    $pdf->SetHeaderData('Picture2.png', 50, 'Data Perizinan', 'Pemali Comal');
+    // $pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
+
+    $pdf->SetMargins(5, 20, 5);
+    $pdf->SetHeaderMargin(3);
+    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+
+    // $pdf->setPrintHeader(false);
+    // $pdf->setPrintFooter(false);
 
     $pdf->addPage();
     $pdf->writeHTML($html, true, false, true, false, '');
