@@ -37,6 +37,7 @@ class C_Perizinan extends BaseController
 
       $msg = [
         'data' => view('perijinan/dataperijinan', $result),
+        'list' => $result['perijinan']
       ];
 
       // dd($msg);

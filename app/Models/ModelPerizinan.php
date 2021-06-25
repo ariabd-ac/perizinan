@@ -78,7 +78,7 @@ class ModelPerizinan extends Model
 				WHERE P.korpokla_by=IFNULL($korpoklaBy,P.korpokla_by)
 				AND 
 				(CASE
-					WHEN $dueDate IS NOT NULL THEN P.jw_tenggang  <= DATE_SUB(NOW(),INTERVAL $dueDate YEAR)
+					WHEN $dueDate IS NOT NULL THEN $dueDate >= (YEAR(P.jw_tenggang) - YEAR(NOW()))
 					ELSE 1=1
 				END
 				)
