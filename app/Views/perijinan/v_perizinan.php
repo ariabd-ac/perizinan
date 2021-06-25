@@ -60,8 +60,7 @@
           <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
             <div class="card-body filter-container">
                 <div class="row">
-                <?php
-                if (session()->get('level') == 'admin') { ?>
+                  <?php if (session()->get('level') == 'admin') { ?>
                   <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
                     <div class="form-group">
                       <label for="by_korpokla">Korpokla</label>
@@ -73,6 +72,9 @@
                       </select>
                     </div>
                   </div>
+                  <?php  } 
+                  ?>
+
                   <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
                     <div class="form-group">
                       <label for="by_korpokla">Masa Tenggang</label>
@@ -84,20 +86,7 @@
                       </select>
                     </div>
                   </div>
-                <?php  } else { ?>
-                  <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
-                    <div class="form-group">
-                      <label for="by_korpokla">Masa Tenggang</label>
-                      <select name="" id="byDueDate" class='form-control'>
-                        <option value="">-PILIH-</option>
-                        <option value="1">1 Tahun</option>
-                        <option value="2">2 Tahun</option>
-                        <option value="3">3 Tahun</option>
-                      </select>
-                    </div>
-                  </div>
-                <?php   }
-                ?>
+                
                 <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
                   <div class="form-group">
                     <!-- <input type="hidden" class='form-control' name=""> -->
