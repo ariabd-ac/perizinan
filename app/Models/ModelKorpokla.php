@@ -24,4 +24,9 @@ class ModelKorpokla extends Model
         ->getRowArray();
     }
   }
+
+  public function count()
+  {
+    return $this->countAll();
+  }
 }

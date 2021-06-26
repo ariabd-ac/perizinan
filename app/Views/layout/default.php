@@ -43,10 +43,10 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="<?= site_url() ?>">PERIZINAN</a>
+            <a href="<?= site_url() ?>">SiPeri</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?= site_url() ?>">perizinan</a>
+            <a href="<?= site_url() ?>">SiPeri</a>
           </div>
           <ul class="sidebar-menu">
             <?= $this->include('layout/menu') ?>

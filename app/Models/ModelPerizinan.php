@@ -69,11 +69,12 @@ class ModelPerizinan extends Model
 		return $this->find($id);
 	}
 
-	public function filterData($param){
-		$korpoklaBy=$param['korpoklaId'] !== "" ?$param['korpoklaId']:"null";
-		$dueDate=$param['dueDate'] !== "" ?$param['dueDate']:"null";
+	public function filterData($param)
+	{
+		$korpoklaBy = $param['korpoklaId'] !== "" ? $param['korpoklaId'] : "null";
+		$dueDate = $param['dueDate'] !== "" ? $param['dueDate'] : "null";
 
-		$query="SELECT P.*,U.* FROM perijinan P
+		$query = "SELECT P.*,U.* FROM perijinan P
 				LEFT JOIN users U ON U.user_id=P.user_by 
 				WHERE P.korpokla_by=IFNULL($korpoklaBy,P.korpokla_by)
 				AND 
@@ -84,7 +85,12 @@ class ModelPerizinan extends Model
 				)
 				AND P.status='approved' ORDER BY P.created_at DESC";
 
-		$result=$this->query($query)->getResultArray();
+		$result = $this->query($query)->getResultArray();
 		return $result;
+	}
+
+	public function count()
+	{
+		return $this->countAll();
 	}
 }

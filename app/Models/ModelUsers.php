@@ -42,4 +42,9 @@ class ModelUsers extends Model
 	{
 		return $this->db->table($this->table)->delete(['user_id' => $id]);
 	}
+
+	public function count()
+	{
+		return $this->countAll();
+	}
 }
