@@ -61,20 +61,21 @@
               <div class="label"></div>
             </div>
           </div>
-          <div class="form-group">
+          
+          <div class="form-group"> 
+            <label>Level</label>
+            <select class="form-control" name="level" id="level" onchange="onselectLevel(this)">
+              <option value="admin">Admin</option>
+              <option value="korpokla">Korpokla</option>
+            </select>
+          </div>
+          <div class="form-group" id="group-select-korpokla" style='display:none'>
             <label>Korpokla</label>
             <select class="form-control" name="korpokla" id="korpokla">
               <option>-PILIH-</option>
               <?php foreach ($korpokla as $key => $value) : ?>
                 <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
               <?php endforeach; ?>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Level</label>
-            <select class="form-control" name="level" id="level">
-              <option value="admin">Admin</option>
-              <option value="korpokla">Korpokla</option>
             </select>
           </div>
           <div class="row">
@@ -88,5 +89,19 @@
     </div>
   </div>
 </section>
+
+<script>
+  function onselectLevel(e){
+    let val=e.value;
+    console.log(val);
+    const korpoklaSelectEl=document.getElementById('group-select-korpokla');
+    if(val =="korpokla"){
+      korpoklaSelectEl.style.display ='block';
+    }else{
+      korpoklaSelectEl.style.display ='none'; 
+    }
+    
+  }
+</script>
 
 <?= $this->endSection() ?>

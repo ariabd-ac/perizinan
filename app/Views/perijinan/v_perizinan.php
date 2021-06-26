@@ -48,62 +48,67 @@
 
         <!-- <button type="button" class="btn btn-primary tomboltambah"><i class="fas fa-plus"></i> Tambah</button> -->
       </div>
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <i class="fas fa-plus"></i>Filter
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+            <div class="card-body filter-container">
+                <div class="row">
+                  <?php if (session()->get('level') == 'admin') { ?>
+                  <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
+                    <div class="form-group">
+                      <label for="by_korpokla">Korpokla</label>
+                      <select class='form-control' name="" id="byKorpokla">
+                        <option value="">-PILIH-</option>
+                        <?php foreach ($korpokla as $key => $value) : ?>
+                          <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                  </div>
+                  <?php  } 
+                  ?>
 
-      <div class="card-body filter-container">
+                  <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
+                    <div class="form-group">
+                      <label for="by_korpokla">Masa Tenggang</label>
+                      <select name="" id="byDueDate" class='form-control'>
+                        <option value="">-PILIH-</option>
+                        <option value="1">1 Tahun</option>
+                        <option value="2">2 Tahun</option>
+                        <option value="3">3 Tahun</option>
+                      </select>
+                    </div>
+                  </div>
+                
+                <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
+                  <div class="form-group">
+                    <!-- <input type="hidden" class='form-control' name=""> -->
+                    <label for="by_korpokla" style="color:white;">Submit</label>
+                    <button class='btn btn-primary filter-button form-control'>Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div class="row">
+
+      
+
+        <!-- <div class="row">
           <div class="col-md-12 col-lg-12 col-12 col-sm-12 col-xs-12 col-xl-12">
             <h6 style="color: #e8632a;">Noteed : Jika sudah memilih filter, dan ingin memilih filter lagi harap refresh terlebih dahulu</h6>
           </div>
-        </div>
+        </div> -->
 
-        <div class="row">
-          <?php
-          if (session()->get('level') == 'admin') { ?>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
-              <div class="form-group">
-                <label for="by_korpokla">Korpokla</label>
-                <select class='form-control' name="" id="byKorpokla">
-                  <option value="">-PILIH-</option>
-                  <?php foreach ($korpokla as $key => $value) : ?>
-                    <option value="<?= $value['korpokla_id'] ?>"><?= $value['korpokla_name'] ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
-              <div class="form-group">
-                <label for="by_korpokla">Masa Tenggang</label>
-                <select name="" id="byDueDate" class='form-control'>
-                  <option value="">-PILIH-</option>
-                  <option value="1">1 Tahun</option>
-                  <option value="2">2 Tahun</option>
-                  <option value="3">3 Tahun</option>
-                </select>
-              </div>
-            </div>
-          <?php  } else { ?>
-            <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
-              <div class="form-group">
-                <label for="by_korpokla">Masa Tenggang</label>
-                <select name="" id="byDueDate" class='form-control'>
-                  <option value="">-PILIH-</option>
-                  <option value="1">1 Tahun</option>
-                  <option value="2">2 Tahun</option>
-                  <option value="3">3 Tahun</option>
-                </select>
-              </div>
-            </div>
-          <?php   }
-          ?>
-          <div class="col-md-4 col-lg-4 col-4 col-sm-4 col-xs-4 col-xl-4">
-            <div class="form-group">
-              <!-- <input type="hidden" class='form-control' name=""> -->
-              <label for="by_korpokla" style="color:white;">Submit</label>
-              <button class='btn btn-primary filter-button form-control'>Submit</button>
-            </div>
-          </div>
-        </div>
+        
 
         <div class="table-responsive viewdata">
 
